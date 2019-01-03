@@ -18,5 +18,15 @@ namespace Employees.Data.Models
             StartOfProject = startOfProject;
             EndOfProject = endOfProject;
         }
+
+        public bool HasStarted()
+        {
+            return DateTime.Compare(StartOfProject, DateTime.Now) <= 0;
+        }
+
+        public bool HasEnded()
+        {
+            return DateTime.Compare(EndOfProject, DateTime.Now) >= 0;
+        }
     }
 }

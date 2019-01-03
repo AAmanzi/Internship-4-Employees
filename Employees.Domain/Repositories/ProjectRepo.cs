@@ -31,5 +31,17 @@ namespace Employees.Domain.Repositories
             }
             return null;
         }
+
+        public bool TryAdd(string name, DateTime startOfProject, DateTime endOfProject)
+        {
+            foreach (var project in _allProjects)
+            {
+                if (project.Name == name)
+                    return false;
+            }
+            var newProject = new Project(name, startOfProject, endOfProject);
+            _allProjects.Add(newProject);
+            return true;
+        }
     }
 }

@@ -31,5 +31,17 @@ namespace Employees.Domain.Repositories
             }
             return null;
         }
+
+        public bool TryAdd(string name, string lastName, DateTime dateOfBirth, int oib, string position)
+        {
+            foreach (var employee in _allEmployees)
+            {
+                if (employee.Oib == oib)
+                    return false;
+            }
+            var newEmployee = new Employee(name, lastName, dateOfBirth, oib, position);
+            _allEmployees.Add(newEmployee);
+            return true;
+        }
     }
 }
