@@ -52,6 +52,7 @@
             this.ManageProjectsButton.TabIndex = 1;
             this.ManageProjectsButton.Text = "Manage Projects";
             this.ManageProjectsButton.UseVisualStyleBackColor = true;
+            this.ManageProjectsButton.Click += new System.EventHandler(this.ManageProjectsButton_Click);
             // 
             // ViewEmployeesButton
             // 

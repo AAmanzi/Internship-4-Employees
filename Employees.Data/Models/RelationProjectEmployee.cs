@@ -9,10 +9,10 @@ namespace Employees.Data.Models
     public class RelationProjectEmployee
     {
         public string NameOfProject { get; set; }
-        public int Oib { get; set; }
+        public string Oib { get; set; }
         public int HoursOfWork { get; set; }
 
-        public RelationProjectEmployee(string nameOfProject, int oib, int hoursOfWork)
+        public RelationProjectEmployee(string nameOfProject, string oib, int hoursOfWork)
         {
             NameOfProject = nameOfProject;
             Oib = oib;

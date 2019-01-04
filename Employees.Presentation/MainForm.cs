@@ -22,5 +22,11 @@ namespace Employees.Presentation
             var manageEmployees = new ManageEmployeesForm();
             manageEmployees.ShowDialog();
         }
+
+        private void ManageProjectsButton_Click(object sender, EventArgs e)
+        {
+            var manageProjects = new ManageProjectsForm();
+            manageProjects.ShowDialog();
+        }
     }
 }

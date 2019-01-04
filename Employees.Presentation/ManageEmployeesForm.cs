@@ -21,6 +21,11 @@ namespace Employees.Presentation
             RefreshEmployeesListBox();
         }
 
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         private void RefreshEmployeesListBox()
         {
             EmployeeListBox.Items.Clear();
@@ -51,12 +56,8 @@ namespace Employees.Presentation
                     EmployeeRepo.Remove(employee);
                 }
             }
-            RefreshEmployeesListBox();
-        }
 
-        private void ExitButton_Click(object sender, EventArgs e)
-        {
-            Close();
+            RefreshEmployeesListBox();
         }
     }
 }

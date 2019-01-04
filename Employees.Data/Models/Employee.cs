@@ -11,10 +11,10 @@ namespace Employees.Data.Models
         public string Name { get; set; }
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public int Oib { get; set; }
+        public string Oib { get; set; }
         public string Position { get; set; }
 
-        public Employee(string name, string lastName, DateTime dateOfBirth, int oib, string position)
+        public Employee(string name, string lastName, DateTime dateOfBirth, string oib, string position)
         {
             Name = name;
             LastName = lastName;
@@ -26,7 +26,7 @@ namespace Employees.Data.Models
         public override string ToString()
         {
             return (
-                $"OIB: {Oib} - {Name} {LastName} - {Position} - Date of Birth: {DateOfBirth:MM/dd/yyyy}"
+                $"OIB: {Oib} - {Name} {LastName} - {Position} - Date of Birth: {DateOfBirth:dd/MM/yyyy}"
             );
         }
     }

@@ -12,11 +12,11 @@ namespace Employees.Domain.Repositories
     {
         private static List<Employee> _allEmployees = new List<Employee>()
         {
-            new Employee("Stipe", "Stipic", DateTime.Now, 1, "Test"),
-            new Employee("Stipe", "Stipic", DateTime.Now, 2, "Test"),
-            new Employee("Stipe", "Stipic", DateTime.Now, 3, "Test"),
-            new Employee("Stipe", "Stipic", DateTime.Now, 4, "Test"),
-            new Employee("Stipe", "Stipic", DateTime.Now, 5, "Test"),
+            new Employee("Stipe", "Stipic", DateTime.Now, "1", "Test"),
+            new Employee("Stipe", "Stipic", DateTime.Now, "2", "Test"),
+            new Employee("Stipe", "Stipic", DateTime.Now, "3", "Test"),
+            new Employee("Stipe", "Stipic", DateTime.Now, "4", "Test"),
+            new Employee("Stipe", "Stipic", DateTime.Now, "5", "Test"),
         };
 
         public static List<Employee> GetEmployees()
@@ -24,7 +24,7 @@ namespace Employees.Domain.Repositories
             return _allEmployees;
         }
 
-        public static Employee GetEmployeeByOib(int oib)
+        public static Employee GetEmployeeByOib(string oib)
         {
             foreach (var employee in _allEmployees)
             {
@@ -34,7 +34,7 @@ namespace Employees.Domain.Repositories
             return null;
         }
 
-        public static bool TryAdd(string name, string lastName, DateTime dateOfBirth, int oib, string position)
+        public static bool TryAdd(string name, string lastName, DateTime dateOfBirth, string oib, string position)
         {
             foreach (var employee in _allEmployees)
             {

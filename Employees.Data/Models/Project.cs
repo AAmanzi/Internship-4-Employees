@@ -32,7 +32,7 @@ namespace Employees.Data.Models
         public override string ToString()
         {
             return (
-                $"Name: {Name} - Start of project: {StartOfProject:MM/dd/yyyy} - End of project: {EndOfProject:MM/dd/yyyy}"
+                $"{Name} - Start of project: {StartOfProject:dd/MM/yyyy} - End of project: {EndOfProject:dd/MM/yyyy}"
             );
         }
     }

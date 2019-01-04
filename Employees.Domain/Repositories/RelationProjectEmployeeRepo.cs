@@ -11,7 +11,7 @@ namespace Employees.Domain.Repositories
     {
         private static List<RelationProjectEmployee> _allRelations = new List<RelationProjectEmployee>()
         {
-            new RelationProjectEmployee("ARK", 1, 15)
+            new RelationProjectEmployee("ARK", "1", 15)
         };
 
         public static List<RelationProjectEmployee> GetAllRelations()
@@ -19,7 +19,7 @@ namespace Employees.Domain.Repositories
             return _allRelations;
         }
 
-        public static RelationProjectEmployee GetRelation(int oib, string nameOfProject)
+        public static RelationProjectEmployee GetRelation(string oib, string nameOfProject)
         {
             foreach (var relation in _allRelations)
             {
@@ -29,7 +29,7 @@ namespace Employees.Domain.Repositories
             return null;
         }
 
-        public static bool TryAdd(string nameOfProject, int oib, int hoursOfWork)
+        public static bool TryAdd(string nameOfProject, string oib, int hoursOfWork)
         {
             foreach (var relation in _allRelations)
             {
@@ -58,7 +58,7 @@ namespace Employees.Domain.Repositories
             return employeesOnProject;
         }
 
-        public static List<Project> GetProjectsByEmployee(int oib)
+        public static List<Project> GetProjectsByEmployee(string oib)
         {
             var projectsByEmployee = new List<Project>();
             foreach (var relation in _allRelations)
@@ -70,7 +70,7 @@ namespace Employees.Domain.Repositories
             return projectsByEmployee;
         }
 
-        public static int EmployeeThisWeeksWorkHours(int oib)
+        public static int EmployeeThisWeeksWorkHours(string oib)
         {
             var allEmployeeProjects = GetProjectsByEmployee(oib);
             var totalHours = 0;
