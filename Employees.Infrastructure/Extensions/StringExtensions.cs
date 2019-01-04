@@ -37,5 +37,11 @@ namespace Employees.Infrastructure.Extensions
             }
             return new string(newText);
         }
+
+        public static int GetOib(this string text)
+        {
+            var newText = text.Split(' ')[1];
+            return int.Parse(newText);
+        }
     }
 }

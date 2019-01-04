@@ -28,5 +28,12 @@ namespace Employees.Data.Models
         {
             return DateTime.Compare(EndOfProject, DateTime.Now) >= 0;
         }
+
+        public override string ToString()
+        {
+            return (
+                $"Name: {Name} - Start of project: {StartOfProject:MM/dd/yyyy} - End of project: {EndOfProject:MM/dd/yyyy}"
+            );
+        }
     }
 }

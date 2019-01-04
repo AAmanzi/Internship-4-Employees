@@ -7,22 +7,19 @@ using Employees.Data.Models;
 
 namespace Employees.Domain.Repositories
 {
-    class RelationProjectEmployeeRepo
+    public static class RelationProjectEmployeeRepo
     {
-        private static List<RelationProjectEmployee> _allRelations = new List<RelationProjectEmployee>();
-
-        public RelationProjectEmployeeRepo()
+        private static List<RelationProjectEmployee> _allRelations = new List<RelationProjectEmployee>()
         {
-            var newRelation = new RelationProjectEmployee("ARK", 1, 15);
-            _allRelations.Add(newRelation);
-        }
+            new RelationProjectEmployee("ARK", 1, 15)
+        };
 
-        public List<RelationProjectEmployee> GetAllRelations()
+        public static List<RelationProjectEmployee> GetAllRelations()
         {
             return _allRelations;
         }
 
-        public RelationProjectEmployee GetRelation(int oib, string nameOfProject)
+        public static RelationProjectEmployee GetRelation(int oib, string nameOfProject)
         {
             foreach (var relation in _allRelations)
             {
@@ -32,7 +29,7 @@ namespace Employees.Domain.Repositories
             return null;
         }
 
-        public bool TryAdd(string nameOfProject, int oib, int hoursOfWork)
+        public static bool TryAdd(string nameOfProject, int oib, int hoursOfWork)
         {
             foreach (var relation in _allRelations)
             {
@@ -50,7 +47,7 @@ namespace Employees.Domain.Repositories
             return true;
         }
 
-        public List<Employee> GetEmployeesOnProject(string nameOfProject)
+        public static List<Employee> GetEmployeesOnProject(string nameOfProject)
         {
             var employeesOnProject = new List<Employee>();
             foreach (var relation in _allRelations)
@@ -61,7 +58,7 @@ namespace Employees.Domain.Repositories
             return employeesOnProject;
         }
 
-        public List<Project> GetProjectsByEmployee(int oib)
+        public static List<Project> GetProjectsByEmployee(int oib)
         {
             var projectsByEmployee = new List<Project>();
             foreach (var relation in _allRelations)
@@ -73,7 +70,7 @@ namespace Employees.Domain.Repositories
             return projectsByEmployee;
         }
 
-        public int EmployeeThisWeeksWorkHours(int oib)
+        public static int EmployeeThisWeeksWorkHours(int oib)
         {
             var allEmployeeProjects = GetProjectsByEmployee(oib);
             var totalHours = 0;
@@ -85,6 +82,11 @@ namespace Employees.Domain.Repositories
                     totalHours += GetRelation(oib, project.Name).HoursOfWork;
             }
             return totalHours;
+        }
+
+        public static void Remove(RelationProjectEmployee toRemove)
+        {
+            _allRelations.Remove(toRemove);
         }
     }
 }

@@ -22,5 +22,12 @@ namespace Employees.Data.Models
             Oib = oib;
             Position = position;
         }
+
+        public override string ToString()
+        {
+            return (
+                $"OIB: {Oib} - {Name} {LastName} - {Position} - Date of Birth: {DateOfBirth:MM/dd/yyyy}"
+            );
+        }
     }
 }

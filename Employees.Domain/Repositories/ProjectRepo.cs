@@ -7,17 +7,14 @@ using Employees.Data.Models;
 
 namespace Employees.Domain.Repositories
 {
-    public class ProjectRepo
+    public static class ProjectRepo
     {
-        private static List<Project> _allProjects = new List<Project>();
-
-        public ProjectRepo()
+        private static List<Project> _allProjects = new List<Project>()
         {
-            var newProject = new Project("ARK", DateTime.Now, DateTime.Now.AddDays(10));
-            _allProjects.Add(newProject);
-        }
+            new Project("ARK", DateTime.Now, DateTime.Now.AddDays(10))
+        };
 
-        public List<Project> GetProjects()
+        public static List<Project> GetProjects()
         {
             return _allProjects;
         }
@@ -32,7 +29,7 @@ namespace Employees.Domain.Repositories
             return null;
         }
 
-        public bool TryAdd(string name, DateTime startOfProject, DateTime endOfProject)
+        public static bool TryAdd(string name, DateTime startOfProject, DateTime endOfProject)
         {
             foreach (var project in _allProjects)
             {
@@ -42,6 +39,11 @@ namespace Employees.Domain.Repositories
             var newProject = new Project(name, startOfProject, endOfProject);
             _allProjects.Add(newProject);
             return true;
+        }
+
+        public static void Remove(Project toRemove)
+        {
+            _allProjects.Remove(toRemove);
         }
     }
 }

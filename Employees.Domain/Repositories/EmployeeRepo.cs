@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,17 +8,18 @@ using Employees.Data.Models;
 
 namespace Employees.Domain.Repositories
 {
-    public class EmployeeRepo
+    public static class EmployeeRepo
     {
-        private static List<Employee> _allEmployees = new List<Employee>();
-
-        public EmployeeRepo()
+        private static List<Employee> _allEmployees = new List<Employee>()
         {
-            var newEmployee = new Employee("Stipe", "Stipic", DateTime.Now, 1, "Test");
-            _allEmployees.Add(newEmployee);
-        }
+            new Employee("Stipe", "Stipic", DateTime.Now, 1, "Test"),
+            new Employee("Stipe", "Stipic", DateTime.Now, 2, "Test"),
+            new Employee("Stipe", "Stipic", DateTime.Now, 3, "Test"),
+            new Employee("Stipe", "Stipic", DateTime.Now, 4, "Test"),
+            new Employee("Stipe", "Stipic", DateTime.Now, 5, "Test"),
+        };
 
-        public List<Employee> GetEmployees()
+        public static List<Employee> GetEmployees()
         {
             return _allEmployees;
         }
@@ -32,7 +34,7 @@ namespace Employees.Domain.Repositories
             return null;
         }
 
-        public bool TryAdd(string name, string lastName, DateTime dateOfBirth, int oib, string position)
+        public static bool TryAdd(string name, string lastName, DateTime dateOfBirth, int oib, string position)
         {
             foreach (var employee in _allEmployees)
             {
@@ -42,6 +44,11 @@ namespace Employees.Domain.Repositories
             var newEmployee = new Employee(name, lastName, dateOfBirth, oib, position);
             _allEmployees.Add(newEmployee);
             return true;
+        }
+
+        public static void Remove(Employee toRemove)
+        {
+            _allEmployees.Remove(toRemove);
         }
     }
 }

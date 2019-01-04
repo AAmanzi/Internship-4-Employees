@@ -17,5 +17,10 @@ namespace Employees.Presentation
             InitializeComponent();
         }
 
+        private void ManageEmployeesButton_Click(object sender, EventArgs e)
+        {
+            var manageEmployees = new ManageEmployeesForm();
+            manageEmployees.ShowDialog();
+        }
     }
 }

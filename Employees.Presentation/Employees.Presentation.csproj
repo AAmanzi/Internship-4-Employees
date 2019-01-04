@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfirmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfirmForm.Designer.cs">
+      <DependentUpon>ConfirmForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ConfirmForm.resx">
+      <DependentUpon>ConfirmForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,6 +98,14 @@
     <ProjectReference Include="..\Employees.Data\Employees.Data.csproj">
       <Project>{90CC8682-80A8-4D3B-B192-74A549982CE9}</Project>
       <Name>Employees.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Employees.Domain\Employees.Domain.csproj">
+      <Project>{717035D6-E0F9-4E7D-A270-6B97B57AC94A}</Project>
+      <Name>Employees.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Employees.Infrastructure\Employees.Infrastructure.csproj">
+      <Project>{5a48a444-8a0b-4d7c-a316-8d1e39862965}</Project>
+      <Name>Employees.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
