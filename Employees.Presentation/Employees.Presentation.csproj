@@ -52,6 +52,12 @@
     <Compile Include="AddEmployeeForm.Designer.cs">
       <DependentUpon>AddEmployeeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddHoursForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddHoursForm.Designer.cs">
+      <DependentUpon>AddHoursForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConfirmForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddEmployeeForm.resx">
       <DependentUpon>AddEmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddHoursForm.resx">
+      <DependentUpon>AddHoursForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConfirmForm.resx">
       <DependentUpon>ConfirmForm.cs</DependentUpon>

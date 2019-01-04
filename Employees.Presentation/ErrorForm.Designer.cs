@@ -34,18 +34,18 @@
             // 
             // ErrorLabel
             // 
-            this.ErrorLabel.AutoSize = true;
             this.ErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ErrorLabel.Location = new System.Drawing.Point(116, 19);
+            this.ErrorLabel.Location = new System.Drawing.Point(25, 29);
             this.ErrorLabel.Name = "ErrorLabel";
-            this.ErrorLabel.Size = new System.Drawing.Size(54, 25);
+            this.ErrorLabel.Size = new System.Drawing.Size(530, 68);
             this.ErrorLabel.TabIndex = 2;
             this.ErrorLabel.Text = "Error";
+            this.ErrorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // OkButton
             // 
             this.OkButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OkButton.Location = new System.Drawing.Point(67, 94);
+            this.OkButton.Location = new System.Drawing.Point(203, 112);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(155, 52);
             this.OkButton.TabIndex = 3;
@@ -58,13 +58,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(285, 176);
+            this.ClientSize = new System.Drawing.Size(578, 176);
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.ErrorLabel);
             this.Name = "ErrorForm";
             this.Text = "ErrorForm";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

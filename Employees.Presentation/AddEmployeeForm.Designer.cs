@@ -38,7 +38,7 @@
             this.OibLabel = new System.Windows.Forms.Label();
             this.OibTextBox = new System.Windows.Forms.TextBox();
             this.PositionLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.PositionTextBox = new System.Windows.Forms.TextBox();
             this.CancelButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.ProjectListBox = new System.Windows.Forms.CheckedListBox();
@@ -73,6 +73,7 @@
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(321, 30);
             this.NameTextBox.TabIndex = 2;
+            this.NameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NameTextBox_KeyPress);
             // 
             // LastNameLabel
             // 
@@ -91,6 +92,7 @@
             this.LastNameTextBox.Name = "LastNameTextBox";
             this.LastNameTextBox.Size = new System.Drawing.Size(279, 30);
             this.LastNameTextBox.TabIndex = 4;
+            this.LastNameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LastNameTextBox_KeyPress);
             // 
             // DateOfBirthLabel
             // 
@@ -127,6 +129,7 @@
             this.OibTextBox.Name = "OibTextBox";
             this.OibTextBox.Size = new System.Drawing.Size(339, 30);
             this.OibTextBox.TabIndex = 8;
+            this.OibTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OibTextBox_KeyPress);
             // 
             // PositionLabel
             // 
@@ -138,13 +141,14 @@
             this.PositionLabel.TabIndex = 9;
             this.PositionLabel.Text = "Position:";
             // 
-            // textBox1
+            // PositionTextBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(145, 316);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(304, 30);
-            this.textBox1.TabIndex = 10;
+            this.PositionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PositionTextBox.Location = new System.Drawing.Point(145, 316);
+            this.PositionTextBox.Name = "PositionTextBox";
+            this.PositionTextBox.Size = new System.Drawing.Size(304, 30);
+            this.PositionTextBox.TabIndex = 10;
+            this.PositionTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PositionTextBox_KeyPress);
             // 
             // CancelButton
             // 
@@ -173,7 +177,7 @@
             this.ProjectListBox.FormattingEnabled = true;
             this.ProjectListBox.Location = new System.Drawing.Point(483, 113);
             this.ProjectListBox.Name = "ProjectListBox";
-            this.ProjectListBox.Size = new System.Drawing.Size(359, 229);
+            this.ProjectListBox.Size = new System.Drawing.Size(371, 229);
             this.ProjectListBox.TabIndex = 13;
             // 
             // label1
@@ -195,7 +199,7 @@
             this.Controls.Add(this.ProjectListBox);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.CancelButton);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.PositionTextBox);
             this.Controls.Add(this.PositionLabel);
             this.Controls.Add(this.OibTextBox);
             this.Controls.Add(this.OibLabel);
@@ -225,7 +229,7 @@
         private System.Windows.Forms.Label OibLabel;
         private System.Windows.Forms.TextBox OibTextBox;
         private System.Windows.Forms.Label PositionLabel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox PositionTextBox;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.CheckedListBox ProjectListBox;

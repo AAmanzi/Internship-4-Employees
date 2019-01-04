@@ -64,6 +64,7 @@ namespace Employees.Presentation
         {
             var addEmployee = new AddEmployeeForm();
             addEmployee.ShowDialog();
+            RefreshEmployeesListBox();
         }
     }
 }
