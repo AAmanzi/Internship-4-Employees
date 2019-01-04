@@ -46,10 +46,10 @@ namespace Employees.Presentation
             if (checkedEmployees.Count == 0)
                 return;
 
-            var ConfirmDeleteEmployee = new ConfirmForm();
-            ConfirmDeleteEmployee.ShowDialog();
+            var confirmDeleteEmployee = new ConfirmForm();
+            confirmDeleteEmployee.ShowDialog();
 
-            if (ConfirmDeleteEmployee.isConfirmed)
+            if (confirmDeleteEmployee.isConfirmed)
             {
                 foreach (var employee in checkedEmployees)
                 {
@@ -58,6 +58,12 @@ namespace Employees.Presentation
             }
 
             RefreshEmployeesListBox();
+        }
+
+        private void AddEmployeeButton_Click(object sender, EventArgs e)
+        {
+            var addEmployee = new AddEmployeeForm();
+            addEmployee.ShowDialog();
         }
     }
 }

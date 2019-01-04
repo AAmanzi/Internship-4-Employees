@@ -44,6 +44,7 @@
             this.AddEmployeeButton.Text = "Add new employee";
             this.AddEmployeeButton.UseMnemonic = false;
             this.AddEmployeeButton.UseVisualStyleBackColor = true;
+            this.AddEmployeeButton.Click += new System.EventHandler(this.AddEmployeeButton_Click);
             // 
             // EditEmployeeButton
             // 

@@ -46,10 +46,10 @@ namespace Employees.Presentation
             if (checkedProjects.Count == 0)
                 return;
 
-            var ConfirmDeleteProject = new ConfirmForm();
-            ConfirmDeleteProject.ShowDialog();
+            var confirmDeleteProject = new ConfirmForm();
+            confirmDeleteProject.ShowDialog();
 
-            if (ConfirmDeleteProject.isConfirmed)
+            if (confirmDeleteProject.isConfirmed)
             {
                 foreach (var project in checkedProjects)
                 {

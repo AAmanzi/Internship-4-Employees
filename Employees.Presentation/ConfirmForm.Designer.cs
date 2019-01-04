@@ -30,7 +30,7 @@
         {
             this.ConfirmYesButton = new System.Windows.Forms.Button();
             this.ConfirmNoButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.ConfirmLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ConfirmYesButton
@@ -55,25 +55,24 @@
             this.ConfirmNoButton.UseVisualStyleBackColor = true;
             this.ConfirmNoButton.Click += new System.EventHandler(this.ConfirmNoButton_Click);
             // 
-            // textBox1
+            // ConfirmLabel
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(106, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(184, 38);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "Are you sure?";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ConfirmLabel.AutoSize = true;
+            this.ConfirmLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConfirmLabel.Location = new System.Drawing.Point(104, 33);
+            this.ConfirmLabel.Name = "ConfirmLabel";
+            this.ConfirmLabel.Size = new System.Drawing.Size(182, 31);
+            this.ConfirmLabel.TabIndex = 3;
+            this.ConfirmLabel.Text = "Are you sure?";
             // 
             // ConfirmForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(396, 204);
+            this.Controls.Add(this.ConfirmLabel);
             this.Controls.Add(this.ConfirmNoButton);
             this.Controls.Add(this.ConfirmYesButton);
-            this.Controls.Add(this.textBox1);
             this.Name = "ConfirmForm";
             this.Text = "ConfirmForm";
             this.ResumeLayout(false);
@@ -84,6 +83,6 @@
         #endregion
         private System.Windows.Forms.Button ConfirmYesButton;
         private System.Windows.Forms.Button ConfirmNoButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label ConfirmLabel;
     }
 }

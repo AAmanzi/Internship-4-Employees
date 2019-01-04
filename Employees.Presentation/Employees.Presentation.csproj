@@ -46,11 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddEmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddEmployeeForm.Designer.cs">
+      <DependentUpon>AddEmployeeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConfirmForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ConfirmForm.Designer.cs">
       <DependentUpon>ConfirmForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorForm.Designer.cs">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -72,8 +84,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddEmployeeForm.resx">
+      <DependentUpon>AddEmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConfirmForm.resx">
       <DependentUpon>ConfirmForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorForm.resx">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
