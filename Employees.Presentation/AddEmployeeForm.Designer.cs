@@ -38,11 +38,11 @@
             this.OibLabel = new System.Windows.Forms.Label();
             this.OibTextBox = new System.Windows.Forms.TextBox();
             this.PositionLabel = new System.Windows.Forms.Label();
-            this.PositionTextBox = new System.Windows.Forms.TextBox();
             this.CancelButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.ProjectListBox = new System.Windows.Forms.CheckedListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.PositionComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // AddEmployeeLabel
@@ -145,15 +145,6 @@
             this.PositionLabel.TabIndex = 9;
             this.PositionLabel.Text = "Position:";
             // 
-            // PositionTextBox
-            // 
-            this.PositionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PositionTextBox.Location = new System.Drawing.Point(145, 316);
-            this.PositionTextBox.Name = "PositionTextBox";
-            this.PositionTextBox.Size = new System.Drawing.Size(304, 30);
-            this.PositionTextBox.TabIndex = 10;
-            this.PositionTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PositionTextBox_KeyPress);
-            // 
             // CancelButton
             // 
             this.CancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
@@ -196,16 +187,27 @@
             this.label1.TabIndex = 14;
             this.label1.Text = "Choose projects for employee";
             // 
+            // PositionComboBox
+            // 
+            this.PositionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PositionComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PositionComboBox.FormattingEnabled = true;
+            this.PositionComboBox.Location = new System.Drawing.Point(145, 313);
+            this.PositionComboBox.Name = "PositionComboBox";
+            this.PositionComboBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.PositionComboBox.Size = new System.Drawing.Size(304, 33);
+            this.PositionComboBox.TabIndex = 15;
+            // 
             // AddEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 463);
+            this.Controls.Add(this.PositionComboBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ProjectListBox);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.CancelButton);
-            this.Controls.Add(this.PositionTextBox);
             this.Controls.Add(this.PositionLabel);
             this.Controls.Add(this.OibTextBox);
             this.Controls.Add(this.OibLabel);
@@ -235,10 +237,10 @@
         private System.Windows.Forms.Label OibLabel;
         private System.Windows.Forms.TextBox OibTextBox;
         private System.Windows.Forms.Label PositionLabel;
-        private System.Windows.Forms.TextBox PositionTextBox;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.CheckedListBox ProjectListBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox PositionComboBox;
     }
 }

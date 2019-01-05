@@ -59,7 +59,7 @@ namespace Employees.Presentation
                         if (RelationProjectEmployeeRepo.TryRemove(
                             RelationProjectEmployeeRepo.GetRelation(employee.Oib, project.Name))) continue;
                         errorCount++;
-                        var lastEmployeeOnProjectError = new ErrorForm($"Employee {employee.Name} {employee.LastName} could not be deleted!\nHe is the last on one or more projects!");
+                        var lastEmployeeOnProjectError = new ErrorForm($"Employee {employee.Name} {employee.LastName} could not be deleted!\nHe is the last employee on one or more projects!");
                         lastEmployeeOnProjectError.ShowDialog();
                         break;
                     }

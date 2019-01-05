@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Employees.Data.Enums;
 using Employees.Data.Models;
 
 namespace Employees.Domain.Repositories
@@ -12,11 +13,11 @@ namespace Employees.Domain.Repositories
     {
         private static List<Employee> _allEmployees = new List<Employee>()
         {
-            new Employee("Stipe", "Stipic", DateTime.Now.Subtract(new TimeSpan(366*20, 0, 0, 0)), "1", "Test"),
-            new Employee("Stipe", "Stipic", DateTime.Now.Subtract(new TimeSpan(366*29, 0, 0, 0)), "2", "Test"),
-            new Employee("Stipe", "Stipic", DateTime.Now.Subtract(new TimeSpan(366*24, 0, 0, 0)), "3", "Test"),
-            new Employee("Stipe", "Stipic", DateTime.Now.Subtract(new TimeSpan(366*26, 0, 0, 0)), "4", "Test"),
-            new Employee("Stipe", "Stipic", DateTime.Now.Subtract(new TimeSpan(366*32, 0, 0, 0)), "5", "Test"),
+            new Employee("Stipe", "Stipic", DateTime.Now.Subtract(new TimeSpan(366*20, 0, 0, 0)), "1", Position.Developer),
+            new Employee("Stipe", "Stipic", DateTime.Now.Subtract(new TimeSpan(366*29, 0, 0, 0)), "2", Position.Designer),
+            new Employee("Stipe", "Stipic", DateTime.Now.Subtract(new TimeSpan(366*24, 0, 0, 0)), "3", Position.ProjectManager),
+            new Employee("Stipe", "Stipic", DateTime.Now.Subtract(new TimeSpan(366*26, 0, 0, 0)), "4", Position.Slicer),
+            new Employee("Stipe", "Stipic", DateTime.Now.Subtract(new TimeSpan(366*32, 0, 0, 0)), "5", Position.Developer),
         };
 
         public static List<Employee> GetEmployees()
@@ -34,7 +35,7 @@ namespace Employees.Domain.Repositories
             return null;
         }
 
-        public static bool TryAdd(string name, string lastName, DateTime dateOfBirth, string oib, string position)
+        public static bool TryAdd(string name, string lastName, DateTime dateOfBirth, string oib, Position position)
         {
             foreach (var employee in _allEmployees)
             {

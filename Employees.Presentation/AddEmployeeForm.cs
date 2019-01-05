@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using Employees.Data.Enums;
 using Employees.Data.Models;
 using Employees.Domain.Repositories;
 using Employees.Infrastructure.Extensions;
@@ -24,10 +25,11 @@ namespace Employees.Presentation
             InitializeComponent();
             DateOfBirthPicker.MaxDate = DateTime.Now.Subtract(new TimeSpan(365 * 18 + 4, 0, 0, 0));
             RefreshProjectsListBox();
+            RefreshPositionComboBox();
             IsAdd = true;
         }
 
-        public AddEmployeeForm(string name, string lastName, DateTime dateOfBirth, string oib, string position)
+        public AddEmployeeForm(string name, string lastName, DateTime dateOfBirth, string oib, Position position)
         {
             OldOib = oib;
             IsAdd = false;
@@ -38,7 +40,8 @@ namespace Employees.Presentation
             LastNameTextBox.Text = lastName;
             DateOfBirthPicker.Value = dateOfBirth;
             OibTextBox.Text = oib;
-            PositionTextBox.Text = position;
+            RefreshPositionComboBox();
+            PositionComboBox.Text = position.ToString();
             RefreshProjectsListBox();
             CheckProjectsByEmployee(oib);
         }
@@ -65,6 +68,15 @@ namespace Employees.Presentation
             }
         }
 
+        private void RefreshPositionComboBox()
+        {
+            var positionNames = Enum.GetNames(typeof(Position));
+            foreach (var position in positionNames)
+            {
+                PositionComboBox.Items.Add(position);
+            }
+        }
+
         private void CancelButton_Click(object sender, EventArgs e)
         {
             var confirmCancel = new ConfirmForm();
@@ -78,9 +90,15 @@ namespace Employees.Presentation
             if (string.IsNullOrWhiteSpace(NameTextBox.Text) ||
                 string.IsNullOrWhiteSpace(LastNameTextBox.Text) ||
                 string.IsNullOrWhiteSpace(OibTextBox.Text) ||
-                string.IsNullOrWhiteSpace(PositionTextBox.Text))
+                string.IsNullOrWhiteSpace(PositionComboBox.Text))
             {
                 new ErrorForm("You are missing some required fields!").ShowDialog();
+                return;
+            }
+
+            if (!OibTextBox.Text.IsOibValid())
+            {
+                new ErrorForm("That is not a valid OIB!").ShowDialog();
                 return;
             }
 
@@ -89,7 +107,7 @@ namespace Employees.Presentation
                 OldOib = OibTextBox.Text;
                 if (EmployeeRepo.GetEmployeeByOib(OldOib) != null)
                 {
-                    var existingEmployeeError = new ErrorForm("An employee with that oib already exists!");
+                    var existingEmployeeError = new ErrorForm("An employee with that OIB already exists!");
                     existingEmployeeError.ShowDialog();
                     return;
                 }
@@ -98,7 +116,7 @@ namespace Employees.Presentation
             {
                 if (OldOib != OibTextBox.Text && EmployeeRepo.GetEmployeeByOib(OibTextBox.Text) != null)
                 {
-                    var existingEmployeeError = new ErrorForm("An employee with that oib already exists!");
+                    var existingEmployeeError = new ErrorForm("An employee with that OIB already exists!");
                     existingEmployeeError.ShowDialog();
                     return;
                 }
@@ -106,7 +124,6 @@ namespace Employees.Presentation
 
             NameTextBox.Text = NameTextBox.Text.TrimAndRemoveWhiteSpaces().AllFirstLettersToUpper();
             LastNameTextBox.Text = LastNameTextBox.Text.TrimAndRemoveWhiteSpaces().AllFirstLettersToUpper();
-            PositionTextBox.Text = PositionTextBox.Text.TrimAndRemoveWhiteSpaces().AllFirstLettersToUpper();
 
             var checkedProjectNames = new List<string>();
             foreach (var checkedProjectItem in ProjectListBox.CheckedItems)
@@ -142,7 +159,7 @@ namespace Employees.Presentation
                 }
             }
             EmployeeRepo.TryAdd(NameTextBox.Text, LastNameTextBox.Text, DateOfBirthPicker.Value, OibTextBox.Text,
-                PositionTextBox.Text);
+                (Position)Enum.Parse(typeof(Position), PositionComboBox.Text));
 
             Close();
         }

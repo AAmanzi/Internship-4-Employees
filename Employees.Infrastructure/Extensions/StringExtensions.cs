@@ -25,7 +25,7 @@ namespace Employees.Infrastructure.Extensions
             return new string(newText);
         }
 
-        public static string AllFirstLettersToUpper(this string text) //Fix
+        public static string AllFirstLettersToUpper(this string text)
         {
             var newText = text.ToLower().ToCharArray();
             for (var i = 0; i < newText.Length; i++)
@@ -51,6 +51,12 @@ namespace Employees.Infrastructure.Extensions
             var regex = new Regex(@"([A-Za-z]+\s)+(- Start)");
             var newText = regex.Match(text).ToString().Replace(" - Start", "");
             return newText;
+        }
+
+        public static bool IsOibValid(this string text)
+        {
+            var regex = new Regex(@"[0-9]{11}");
+            return regex.IsMatch(text);
         }
     }
 }

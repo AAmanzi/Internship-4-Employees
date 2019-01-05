@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Employees.Data.Enums;
 
 namespace Employees.Data.Models
 {
@@ -12,9 +13,9 @@ namespace Employees.Data.Models
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string Oib { get; set; }
-        public string Position { get; set; }
+        public Position Position { get; set; }
 
-        public Employee(string name, string lastName, DateTime dateOfBirth, string oib, string position)
+        public Employee(string name, string lastName, DateTime dateOfBirth, string oib, Position position)
         {
             Name = name;
             LastName = lastName;
