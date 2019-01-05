@@ -42,7 +42,6 @@ namespace Employees.Presentation
             {
                 checkedProjects.Add(ProjectRepo.GetProjectByName(checkedProjectItem.ToString().GetProjectName()));
             }
-
             if (checkedProjects.Count == 0)
                 return;
 
@@ -64,6 +63,24 @@ namespace Employees.Presentation
         {
             var addProject = new AddProjectForm();
             addProject.ShowDialog();
+            RefreshProjectsListBox();
+        }
+
+        private void EditProjectButton_Click(object sender, EventArgs e)
+        {
+            var checkedProjects = new List<Project>();
+            foreach (var checkedProjectItem in ProjectListBox.CheckedItems)
+            {
+                checkedProjects.Add(ProjectRepo.GetProjectByName(checkedProjectItem.ToString().GetProjectName()));
+            }
+            if (checkedProjects.Count == 0)
+                return;
+
+            foreach (var project in checkedProjects)
+            {
+                var editProject = new AddProjectForm(project.Name, project.StartOfProject, project.EndOfProject);
+                editProject.ShowDialog();
+            }
             RefreshProjectsListBox();
         }
     }

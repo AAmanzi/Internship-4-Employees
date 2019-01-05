@@ -11,9 +11,9 @@ namespace Employees.Domain.Repositories
     {
         private static List<RelationProjectEmployee> _allRelations = new List<RelationProjectEmployee>()
         {
-            new RelationProjectEmployee("ARK", "1", 10),
-            new RelationProjectEmployee("ARK", "4", 15),
-            new RelationProjectEmployee("ARK", "5", 15),
+            new RelationProjectEmployee("Ark", "1", 10),
+            new RelationProjectEmployee("Ark", "4", 15),
+            new RelationProjectEmployee("Ark", "5", 15),
             new RelationProjectEmployee("Github", "1", 20),
             new RelationProjectEmployee("Github", "2", 10),
             new RelationProjectEmployee("Github", "3", 15),
@@ -93,7 +93,19 @@ namespace Employees.Domain.Repositories
             return totalHours;
         }
 
-        public static void Remove(RelationProjectEmployee toRemove)
+        public static bool IsEmployeeOnProject(string oib, string projectName)
+        {
+            var projectsByEmployee = GetProjectsByEmployee(oib);
+            foreach (var project in projectsByEmployee)
+            {
+                if (project.Name == projectName)
+                    return true;
+            }
+
+            return false;
+        }
+
+        public static void TryRemove(RelationProjectEmployee toRemove)
         {
             _allRelations.Remove(toRemove);
         }

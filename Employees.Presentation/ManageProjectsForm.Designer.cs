@@ -62,6 +62,7 @@
             this.EditProjectButton.TabIndex = 3;
             this.EditProjectButton.Text = "Edit selected";
             this.EditProjectButton.UseVisualStyleBackColor = true;
+            this.EditProjectButton.Click += new System.EventHandler(this.EditProjectButton_Click);
             // 
             // DeleteProjectButton
             // 
