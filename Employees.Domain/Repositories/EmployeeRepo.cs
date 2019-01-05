@@ -12,11 +12,11 @@ namespace Employees.Domain.Repositories
     {
         private static List<Employee> _allEmployees = new List<Employee>()
         {
-            new Employee("Stipe", "Stipic", DateTime.Now, "1", "Test"),
-            new Employee("Stipe", "Stipic", DateTime.Now, "2", "Test"),
-            new Employee("Stipe", "Stipic", DateTime.Now, "3", "Test"),
-            new Employee("Stipe", "Stipic", DateTime.Now, "4", "Test"),
-            new Employee("Stipe", "Stipic", DateTime.Now, "5", "Test"),
+            new Employee("Stipe", "Stipic", DateTime.Now.Subtract(new TimeSpan(366*20, 0, 0, 0)), "1", "Test"),
+            new Employee("Stipe", "Stipic", DateTime.Now.Subtract(new TimeSpan(366*29, 0, 0, 0)), "2", "Test"),
+            new Employee("Stipe", "Stipic", DateTime.Now.Subtract(new TimeSpan(366*24, 0, 0, 0)), "3", "Test"),
+            new Employee("Stipe", "Stipic", DateTime.Now.Subtract(new TimeSpan(366*26, 0, 0, 0)), "4", "Test"),
+            new Employee("Stipe", "Stipic", DateTime.Now.Subtract(new TimeSpan(366*32, 0, 0, 0)), "5", "Test"),
         };
 
         public static List<Employee> GetEmployees()

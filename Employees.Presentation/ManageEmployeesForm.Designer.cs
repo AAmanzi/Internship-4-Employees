@@ -54,6 +54,7 @@
             this.EditEmployeeButton.TabIndex = 2;
             this.EditEmployeeButton.Text = "Edit selected";
             this.EditEmployeeButton.UseVisualStyleBackColor = true;
+            this.EditEmployeeButton.Click += new System.EventHandler(this.EditEmployeeButton_Click);
             // 
             // DeleteEmployeeButton
             // 

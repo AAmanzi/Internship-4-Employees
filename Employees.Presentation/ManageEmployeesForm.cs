@@ -53,7 +53,18 @@ namespace Employees.Presentation
             {
                 foreach (var employee in checkedEmployees)
                 {
-                    EmployeeRepo.Remove(employee);
+                    var errorCount = 0;
+                    foreach (var project in RelationProjectEmployeeRepo.GetProjectsByEmployee(employee.Oib))
+                    {
+                        if (RelationProjectEmployeeRepo.TryRemove(
+                            RelationProjectEmployeeRepo.GetRelation(employee.Oib, project.Name))) continue;
+                        errorCount++;
+                        var lastEmployeeOnProjectError = new ErrorForm($"Employee {employee.Name} {employee.LastName} could not be deleted!\nHe is the last on one or more projects!");
+                        lastEmployeeOnProjectError.ShowDialog();
+                        break;
+                    }
+                    if (errorCount == 0)
+                        EmployeeRepo.Remove(employee);
                 }
             }
 
@@ -64,6 +75,25 @@ namespace Employees.Presentation
         {
             var addEmployee = new AddEmployeeForm();
             addEmployee.ShowDialog();
+            RefreshEmployeesListBox();
+        }
+
+        private void EditEmployeeButton_Click(object sender, EventArgs e)
+        {
+            var checkedEmployees = new List<Employee>();
+            foreach (var checkedEmployeeItem in EmployeeListBox.CheckedItems)
+            {
+                checkedEmployees.Add(EmployeeRepo.GetEmployeeByOib(checkedEmployeeItem.ToString().GetOib()));
+            }
+            if (checkedEmployees.Count == 0)
+                return;
+
+            foreach (var employee in checkedEmployees)
+            {
+                var editProject = new AddEmployeeForm(employee.Name, employee.LastName, employee.DateOfBirth, employee.Oib, employee.Position);
+                editProject.ShowDialog();
+            }
+
             RefreshEmployeesListBox();
         }
     }

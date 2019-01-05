@@ -109,9 +109,12 @@
             this.DateOfBirthPicker.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateOfBirthPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateOfBirthPicker.Location = new System.Drawing.Point(180, 195);
+            this.DateOfBirthPicker.MaxDate = new System.DateTime(2019, 1, 5, 0, 0, 0, 0);
+            this.DateOfBirthPicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.DateOfBirthPicker.Name = "DateOfBirthPicker";
             this.DateOfBirthPicker.Size = new System.Drawing.Size(269, 30);
             this.DateOfBirthPicker.TabIndex = 6;
+            this.DateOfBirthPicker.Value = new System.DateTime(2019, 1, 5, 0, 0, 0, 0);
             // 
             // OibLabel
             // 

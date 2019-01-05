@@ -53,6 +53,10 @@ namespace Employees.Presentation
                 foreach (var project in checkedProjects)
                 {
                     ProjectRepo.Remove(project);
+                    foreach (var employee in RelationProjectEmployeeRepo.GetEmployeesOnProject(project.Name))
+                    {
+                        RelationProjectEmployeeRepo.Remove(RelationProjectEmployeeRepo.GetRelation(employee.Oib, project.Name));
+                    }
                 }
             }
 

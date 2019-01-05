@@ -20,14 +20,14 @@ namespace Employees.Infrastructure.Extensions
 
         public static string FirstLetterToUpper(this string text)
         {
-            var newText = text.ToCharArray();
+            var newText = text.ToLower().ToCharArray();
             newText[0] = char.ToUpper(newText[0]);
             return new string(newText);
         }
 
-        public static string AllFirstLettersToUpper(this string text)
+        public static string AllFirstLettersToUpper(this string text) //Fix
         {
-            var newText = text.ToCharArray();
+            var newText = text.ToLower().ToCharArray();
             for (var i = 0; i < newText.Length; i++)
             {
                 if (i == 0)
@@ -40,13 +40,16 @@ namespace Employees.Infrastructure.Extensions
 
         public static string GetOib(this string text)
         {
-            var newText = text.Split(' ')[1];
+            var regex = new Regex(@"(OIB:)\s[0-9]+\s");
+            var newText = regex.Match(text).ToString().Replace("OIB:", "").Replace(" ", "");
+
             return newText;
         }
 
         public static string GetProjectName(this string text)
         {
-            var newText = text.Split(' ')[0];
+            var regex = new Regex(@"([A-Za-z]+\s)+(- Start)");
+            var newText = regex.Match(text).ToString().Replace(" - Start", "");
             return newText;
         }
     }

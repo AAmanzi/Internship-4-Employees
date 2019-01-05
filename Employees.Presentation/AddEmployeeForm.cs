@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using Employees.Data.Models;
 using Employees.Domain.Repositories;
 using Employees.Infrastructure.Extensions;
@@ -15,18 +16,31 @@ namespace Employees.Presentation
 {
     public partial class AddEmployeeForm : Form
     {
+        public string OldOib { get; set; }
+        public bool IsAdd { get; set; }
+
         public AddEmployeeForm()
         {
             InitializeComponent();
+            DateOfBirthPicker.MaxDate = DateTime.Now.Subtract(new TimeSpan(365 * 18 + 4, 0, 0, 0));
             RefreshProjectsListBox();
+            IsAdd = true;
         }
 
-        private void CancelButton_Click(object sender, EventArgs e)
+        public AddEmployeeForm(string name, string lastName, DateTime dateOfBirth, string oib, string position)
         {
-            var confirmCancel = new ConfirmForm();
-            confirmCancel.ShowDialog();
-            if (confirmCancel.isConfirmed)
-                Close();
+            OldOib = oib;
+            IsAdd = false;
+
+            InitializeComponent();
+            AddEmployeeLabel.Text = @"Edit Employee";
+            NameTextBox.Text = name;
+            LastNameTextBox.Text = lastName;
+            DateOfBirthPicker.Value = dateOfBirth;
+            OibTextBox.Text = oib;
+            PositionTextBox.Text = position;
+            RefreshProjectsListBox();
+            CheckProjectsByEmployee(oib);
         }
 
         private void RefreshProjectsListBox()
@@ -36,6 +50,27 @@ namespace Employees.Presentation
             {
                 ProjectListBox.Items.Add(project);
             }
+        }
+
+        private void CheckProjectsByEmployee(string employeeOib)
+        {
+            foreach (var project in RelationProjectEmployeeRepo.GetProjectsByEmployee(employeeOib))
+            {
+                for (var i = 0; i < ProjectListBox.Items.Count; i++)
+                {
+                    if (ProjectListBox.Items[i].ToString().GetProjectName() != project.ToString().GetProjectName()) continue;
+                    ProjectListBox.SetItemChecked(i, true);
+                    break;
+                }
+            }
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            var confirmCancel = new ConfirmForm();
+            confirmCancel.ShowDialog();
+            if (confirmCancel.isConfirmed)
+                Close();
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -49,7 +84,29 @@ namespace Employees.Presentation
                 return;
             }
 
-            //User input checks here
+            if (IsAdd)
+            {
+                OldOib = OibTextBox.Text;
+                if (EmployeeRepo.GetEmployeeByOib(OldOib) != null)
+                {
+                    var existingEmployeeError = new ErrorForm("An employee with that oib already exists!");
+                    existingEmployeeError.ShowDialog();
+                    return;
+                }
+            }
+            else
+            {
+                if (OldOib != OibTextBox.Text && EmployeeRepo.GetEmployeeByOib(OibTextBox.Text) != null)
+                {
+                    var existingEmployeeError = new ErrorForm("An employee with that oib already exists!");
+                    existingEmployeeError.ShowDialog();
+                    return;
+                }
+            }
+
+            NameTextBox.Text = NameTextBox.Text.TrimAndRemoveWhiteSpaces().AllFirstLettersToUpper();
+            LastNameTextBox.Text = LastNameTextBox.Text.TrimAndRemoveWhiteSpaces().AllFirstLettersToUpper();
+            PositionTextBox.Text = PositionTextBox.Text.TrimAndRemoveWhiteSpaces().AllFirstLettersToUpper();
 
             var checkedProjectNames = new List<string>();
             foreach (var checkedProjectItem in ProjectListBox.CheckedItems)
@@ -57,14 +114,36 @@ namespace Employees.Presentation
                 checkedProjectNames.Add(checkedProjectItem.ToString().GetProjectName());
             }
 
-            foreach (var projectName in checkedProjectNames)
+            foreach (var projectItem in ProjectListBox.Items)
             {
-                var addHours = new AddHoursForm(projectName, NameTextBox.Text, true);
-                addHours.ShowDialog();
-                RelationProjectEmployeeRepo.TryAdd(projectName, OibTextBox.Text, addHours.HoursToAdd);
+                if (ProjectListBox.CheckedItems.Contains(projectItem)) continue;
+                if (RelationProjectEmployeeRepo.IsEmployeeOnProject(OldOib, projectItem.ToString().GetProjectName()))
+                {
+                    RelationProjectEmployeeRepo.TryRemove(
+                        RelationProjectEmployeeRepo.GetRelation(OldOib, projectItem.ToString().GetProjectName()));
+                }
             }
 
-            EmployeeRepo.TryAdd(NameTextBox.Text, LastNameTextBox.Text, DateOfBirthPicker.Value, OibTextBox.Text, PositionTextBox.Text);
+            foreach (var projectName in checkedProjectNames)
+            {
+                if (RelationProjectEmployeeRepo.IsEmployeeOnProject(OldOib, projectName)) continue;
+                var addHours = new AddHoursForm(projectName, NameTextBox.Text, true);
+                addHours.ShowDialog();
+                RelationProjectEmployeeRepo.TryAdd(projectName, OldOib, addHours.HoursToAdd);
+            }
+
+            EmployeeRepo.Remove(EmployeeRepo.GetEmployeeByOib(OldOib));
+            foreach (var relation
+                in RelationProjectEmployeeRepo.GetAllRelations())
+            {
+                if (relation.Oib == OldOib)
+                {
+                    relation.Oib = OibTextBox.Text;
+                }
+            }
+            EmployeeRepo.TryAdd(NameTextBox.Text, LastNameTextBox.Text, DateOfBirthPicker.Value, OibTextBox.Text,
+                PositionTextBox.Text);
+
             Close();
         }
 

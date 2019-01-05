@@ -100,7 +100,7 @@
             this.StartDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StartDatePicker.Location = new System.Drawing.Point(185, 171);
             this.StartDatePicker.MaxDate = new System.DateTime(2200, 12, 31, 0, 0, 0, 0);
-            this.StartDatePicker.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
+            this.StartDatePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.StartDatePicker.Name = "StartDatePicker";
             this.StartDatePicker.Size = new System.Drawing.Size(248, 30);
             this.StartDatePicker.TabIndex = 7;
@@ -111,10 +111,11 @@
             this.EndDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EndDatePicker.Location = new System.Drawing.Point(175, 272);
             this.EndDatePicker.MaxDate = new System.DateTime(2200, 12, 31, 0, 0, 0, 0);
-            this.EndDatePicker.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
+            this.EndDatePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.EndDatePicker.Name = "EndDatePicker";
             this.EndDatePicker.Size = new System.Drawing.Size(258, 30);
             this.EndDatePicker.TabIndex = 8;
+            this.EndDatePicker.Value = new System.DateTime(2019, 1, 5, 17, 24, 48, 0);
             // 
             // CancelButton
             // 

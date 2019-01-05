@@ -42,14 +42,9 @@ namespace Employees.Domain.Repositories
         {
             foreach (var relation in _allRelations)
             {
-                if (relation.NameOfProject == nameOfProject && relation.HoursOfWork == hoursOfWork)
+                if (relation.NameOfProject == nameOfProject && relation.Oib == oib)
                     return false;
             }
-
-            if (EmployeeRepo.GetEmployeeByOib(oib) == null)
-                return false;
-            if (ProjectRepo.GetProjectByName(nameOfProject) == null)
-                return false;
 
             var newRelation = new RelationProjectEmployee(nameOfProject, oib, hoursOfWork);
             _allRelations.Add(newRelation);
@@ -105,7 +100,20 @@ namespace Employees.Domain.Repositories
             return false;
         }
 
-        public static void TryRemove(RelationProjectEmployee toRemove)
+        public static bool TryRemove(RelationProjectEmployee toRemove)
+        {
+            foreach (var project in GetProjectsByEmployee(toRemove.Oib))
+            {
+                if (GetEmployeesOnProject(project.Name).Count == 1)
+                {
+                    return false;
+                }
+            }
+            _allRelations.Remove(toRemove);
+            return true;
+        }
+
+        public static void Remove(RelationProjectEmployee toRemove)
         {
             _allRelations.Remove(toRemove);
         }
