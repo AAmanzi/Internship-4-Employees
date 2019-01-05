@@ -11,7 +11,16 @@ namespace Employees.Domain.Repositories
     {
         private static List<RelationProjectEmployee> _allRelations = new List<RelationProjectEmployee>()
         {
-            new RelationProjectEmployee("ARK", "1", 15)
+            new RelationProjectEmployee("ARK", "1", 10),
+            new RelationProjectEmployee("ARK", "4", 15),
+            new RelationProjectEmployee("ARK", "5", 15),
+            new RelationProjectEmployee("Github", "1", 20),
+            new RelationProjectEmployee("Github", "2", 10),
+            new RelationProjectEmployee("Github", "3", 15),
+            new RelationProjectEmployee("Github", "5", 10),
+            new RelationProjectEmployee("Edge", "1", 15),
+            new RelationProjectEmployee("Edge", "3", 10),
+            new RelationProjectEmployee("Edge", "4", 5),
         };
 
         public static List<RelationProjectEmployee> GetAllRelations()

@@ -52,6 +52,7 @@
             this.AddProjectButton.Text = "Add new project";
             this.AddProjectButton.UseMnemonic = false;
             this.AddProjectButton.UseVisualStyleBackColor = true;
+            this.AddProjectButton.Click += new System.EventHandler(this.AddProjectButton_Click);
             // 
             // EditProjectButton
             // 

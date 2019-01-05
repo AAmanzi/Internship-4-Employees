@@ -58,6 +58,12 @@
     <Compile Include="AddHoursForm.Designer.cs">
       <DependentUpon>AddHoursForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddProjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddProjectForm.Designer.cs">
+      <DependentUpon>AddProjectForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConfirmForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddHoursForm.resx">
       <DependentUpon>AddHoursForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddProjectForm.resx">
+      <DependentUpon>AddProjectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConfirmForm.resx">
       <DependentUpon>ConfirmForm.cs</DependentUpon>

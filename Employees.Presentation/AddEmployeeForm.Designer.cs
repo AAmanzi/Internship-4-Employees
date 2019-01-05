@@ -107,9 +107,10 @@
             // DateOfBirthPicker
             // 
             this.DateOfBirthPicker.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DateOfBirthPicker.Location = new System.Drawing.Point(180, 205);
+            this.DateOfBirthPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateOfBirthPicker.Location = new System.Drawing.Point(180, 195);
             this.DateOfBirthPicker.Name = "DateOfBirthPicker";
-            this.DateOfBirthPicker.Size = new System.Drawing.Size(269, 20);
+            this.DateOfBirthPicker.Size = new System.Drawing.Size(269, 30);
             this.DateOfBirthPicker.TabIndex = 6;
             // 
             // OibLabel
@@ -153,6 +154,7 @@
             // CancelButton
             // 
             this.CancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.CancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CancelButton.Location = new System.Drawing.Point(180, 381);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(158, 52);
@@ -164,6 +166,7 @@
             // SaveButton
             // 
             this.SaveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.Location = new System.Drawing.Point(544, 381);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(158, 52);

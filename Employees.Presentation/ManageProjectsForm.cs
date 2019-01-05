@@ -59,5 +59,12 @@ namespace Employees.Presentation
 
             RefreshProjectsListBox();
         }
+
+        private void AddProjectButton_Click(object sender, EventArgs e)
+        {
+            var addProject = new AddProjectForm();
+            addProject.ShowDialog();
+            RefreshProjectsListBox();
+        }
     }
 }

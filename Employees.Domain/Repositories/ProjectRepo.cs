@@ -11,7 +11,9 @@ namespace Employees.Domain.Repositories
     {
         private static List<Project> _allProjects = new List<Project>()
         {
-            new Project("ARK", DateTime.Now, DateTime.Now.AddDays(10))
+            new Project("Ark", DateTime.Now, DateTime.Now.AddDays(10)),
+            new Project("Github", DateTime.Now, DateTime.Now.AddDays(16)),
+            new Project("Edge", DateTime.Now, DateTime.Now.AddDays(25))
         };
 
         public static List<Project> GetProjects()
