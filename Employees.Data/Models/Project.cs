@@ -21,12 +21,12 @@ namespace Employees.Data.Models
 
         public bool HasStarted()
         {
-            return DateTime.Compare(StartOfProject, DateTime.Now) <= 0;
+            return StartOfProject.Date <= DateTime.Now.Date;
         }
 
         public bool HasEnded()
         {
-            return DateTime.Compare(EndOfProject, DateTime.Now) >= 0;
+            return EndOfProject.Date <= DateTime.Now.Date;
         }
 
         public override string ToString()

@@ -28,5 +28,17 @@ namespace Employees.Presentation
             var manageProjects = new ManageProjectsForm();
             manageProjects.ShowDialog();
         }
+
+        private void ViewProjectsInfoButton_Click(object sender, EventArgs e)
+        {
+            var allProjectsInfo = new AllProjectsInfoForm();
+            allProjectsInfo.ShowDialog();
+        }
+
+        private void ViewEmployeesButton_Click(object sender, EventArgs e)
+        {
+            var allEmployeesInfo = new AllEmployeesInfo();
+            allEmployeesInfo.ShowDialog();
+        }
     }
 }

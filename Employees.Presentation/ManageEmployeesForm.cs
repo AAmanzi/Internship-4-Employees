@@ -21,7 +21,7 @@ namespace Employees.Presentation
             RefreshEmployeesListBox();
         }
 
-        private void ExitButton_Click(object sender, EventArgs e)
+        private void CloseButton_Click(object sender, EventArgs e)
         {
             Close();
         }

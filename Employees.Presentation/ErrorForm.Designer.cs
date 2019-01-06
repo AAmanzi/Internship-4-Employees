@@ -44,6 +44,7 @@
             // 
             // OkButton
             // 
+            this.OkButton.BackColor = System.Drawing.Color.MintCream;
             this.OkButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OkButton.Location = new System.Drawing.Point(203, 112);
             this.OkButton.Name = "OkButton";
@@ -51,13 +52,14 @@
             this.OkButton.TabIndex = 3;
             this.OkButton.Text = "OK";
             this.OkButton.UseMnemonic = false;
-            this.OkButton.UseVisualStyleBackColor = true;
+            this.OkButton.UseVisualStyleBackColor = false;
             this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // ErrorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(578, 176);
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.ErrorLabel);

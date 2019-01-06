@@ -68,6 +68,7 @@
             // 
             // NameTextBox
             // 
+            this.NameTextBox.BackColor = System.Drawing.Color.Azure;
             this.NameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NameTextBox.Location = new System.Drawing.Point(128, 82);
             this.NameTextBox.Name = "NameTextBox";
@@ -87,6 +88,7 @@
             // 
             // LastNameTextBox
             // 
+            this.LastNameTextBox.BackColor = System.Drawing.Color.Azure;
             this.LastNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LastNameTextBox.Location = new System.Drawing.Point(170, 128);
             this.LastNameTextBox.Name = "LastNameTextBox";
@@ -107,6 +109,8 @@
             // DateOfBirthPicker
             // 
             this.DateOfBirthPicker.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateOfBirthPicker.CalendarMonthBackground = System.Drawing.Color.Azure;
+            this.DateOfBirthPicker.CalendarTitleBackColor = System.Drawing.Color.Azure;
             this.DateOfBirthPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateOfBirthPicker.Location = new System.Drawing.Point(180, 195);
             this.DateOfBirthPicker.MaxDate = new System.DateTime(2019, 1, 5, 0, 0, 0, 0);
@@ -128,6 +132,7 @@
             // 
             // OibTextBox
             // 
+            this.OibTextBox.BackColor = System.Drawing.Color.Azure;
             this.OibTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OibTextBox.Location = new System.Drawing.Point(110, 256);
             this.OibTextBox.Name = "OibTextBox";
@@ -147,8 +152,9 @@
             // 
             // CancelButton
             // 
-            this.CancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.CancelButton.BackColor = System.Drawing.Color.DarkSlateGray;
             this.CancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CancelButton.ForeColor = System.Drawing.Color.White;
             this.CancelButton.Location = new System.Drawing.Point(180, 381);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(158, 52);
@@ -159,7 +165,7 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.SaveButton.BackColor = System.Drawing.Color.MintCream;
             this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.Location = new System.Drawing.Point(544, 381);
             this.SaveButton.Name = "SaveButton";
@@ -171,6 +177,7 @@
             // 
             // ProjectListBox
             // 
+            this.ProjectListBox.BackColor = System.Drawing.Color.LightCyan;
             this.ProjectListBox.FormattingEnabled = true;
             this.ProjectListBox.Location = new System.Drawing.Point(483, 113);
             this.ProjectListBox.Name = "ProjectListBox";
@@ -189,6 +196,7 @@
             // 
             // PositionComboBox
             // 
+            this.PositionComboBox.BackColor = System.Drawing.Color.Azure;
             this.PositionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PositionComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PositionComboBox.FormattingEnabled = true;
@@ -202,6 +210,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(884, 463);
             this.Controls.Add(this.PositionComboBox);
             this.Controls.Add(this.label1);

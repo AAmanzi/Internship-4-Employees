@@ -32,11 +32,12 @@
             this.AddProjectButton = new System.Windows.Forms.Button();
             this.EditProjectButton = new System.Windows.Forms.Button();
             this.DeleteProjectButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.CloseButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ProjectListBox
             // 
+            this.ProjectListBox.BackColor = System.Drawing.Color.LightCyan;
             this.ProjectListBox.FormattingEnabled = true;
             this.ProjectListBox.Location = new System.Drawing.Point(40, 28);
             this.ProjectListBox.Name = "ProjectListBox";
@@ -45,52 +46,62 @@
             // 
             // AddProjectButton
             // 
+            this.AddProjectButton.BackColor = System.Drawing.Color.MintCream;
+            this.AddProjectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddProjectButton.Location = new System.Drawing.Point(561, 28);
             this.AddProjectButton.Name = "AddProjectButton";
             this.AddProjectButton.Size = new System.Drawing.Size(227, 52);
             this.AddProjectButton.TabIndex = 2;
             this.AddProjectButton.Text = "Add new project";
             this.AddProjectButton.UseMnemonic = false;
-            this.AddProjectButton.UseVisualStyleBackColor = true;
+            this.AddProjectButton.UseVisualStyleBackColor = false;
             this.AddProjectButton.Click += new System.EventHandler(this.AddProjectButton_Click);
             // 
             // EditProjectButton
             // 
+            this.EditProjectButton.BackColor = System.Drawing.Color.MintCream;
+            this.EditProjectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EditProjectButton.Location = new System.Drawing.Point(561, 110);
             this.EditProjectButton.Name = "EditProjectButton";
             this.EditProjectButton.Size = new System.Drawing.Size(227, 52);
             this.EditProjectButton.TabIndex = 3;
             this.EditProjectButton.Text = "Edit selected";
-            this.EditProjectButton.UseVisualStyleBackColor = true;
+            this.EditProjectButton.UseVisualStyleBackColor = false;
             this.EditProjectButton.Click += new System.EventHandler(this.EditProjectButton_Click);
             // 
             // DeleteProjectButton
             // 
+            this.DeleteProjectButton.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.DeleteProjectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteProjectButton.ForeColor = System.Drawing.Color.White;
             this.DeleteProjectButton.Location = new System.Drawing.Point(561, 195);
             this.DeleteProjectButton.Name = "DeleteProjectButton";
             this.DeleteProjectButton.Size = new System.Drawing.Size(227, 52);
             this.DeleteProjectButton.TabIndex = 4;
             this.DeleteProjectButton.Text = "Delete selected";
-            this.DeleteProjectButton.UseVisualStyleBackColor = true;
+            this.DeleteProjectButton.UseVisualStyleBackColor = false;
             this.DeleteProjectButton.Click += new System.EventHandler(this.DeleteSelectedButton_Click);
             // 
-            // button1
+            // CloseButton
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.button1.Location = new System.Drawing.Point(685, 310);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 52);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Exit";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.ExitButton_Click);
+            this.CloseButton.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CloseButton.ForeColor = System.Drawing.Color.White;
+            this.CloseButton.Location = new System.Drawing.Point(685, 310);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(103, 52);
+            this.CloseButton.TabIndex = 6;
+            this.CloseButton.Text = "Close";
+            this.CloseButton.UseVisualStyleBackColor = false;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // ManageProjectsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(800, 388);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.DeleteProjectButton);
             this.Controls.Add(this.EditProjectButton);
             this.Controls.Add(this.AddProjectButton);
@@ -107,6 +118,6 @@
         private System.Windows.Forms.Button AddProjectButton;
         private System.Windows.Forms.Button EditProjectButton;
         private System.Windows.Forms.Button DeleteProjectButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button CloseButton;
     }
 }

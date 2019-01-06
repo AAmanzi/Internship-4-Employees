@@ -64,6 +64,18 @@
     <Compile Include="AddProjectForm.Designer.cs">
       <DependentUpon>AddProjectForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AllEmployeesInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllEmployeesInfo.Designer.cs">
+      <DependentUpon>AllEmployeesInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AllProjectsInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllProjectsInfoForm.Designer.cs">
+      <DependentUpon>AllProjectsInfoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConfirmForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +107,12 @@
       <DependentUpon>ManageProjectsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="ProjectDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectDetailsForm.Designer.cs">
+      <DependentUpon>ProjectDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddEmployeeForm.resx">
       <DependentUpon>AddEmployeeForm.cs</DependentUpon>
@@ -104,6 +122,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddProjectForm.resx">
       <DependentUpon>AddProjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AllEmployeesInfo.resx">
+      <DependentUpon>AllEmployeesInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AllProjectsInfoForm.resx">
+      <DependentUpon>AllProjectsInfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConfirmForm.resx">
       <DependentUpon>ConfirmForm.cs</DependentUpon>
@@ -119,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ManageProjectsForm.resx">
       <DependentUpon>ManageProjectsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectDetailsForm.resx">
+      <DependentUpon>ProjectDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

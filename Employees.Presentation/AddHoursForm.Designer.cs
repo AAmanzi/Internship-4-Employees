@@ -67,6 +67,7 @@
             // 
             // HoursTextBox
             // 
+            this.HoursTextBox.BackColor = System.Drawing.Color.Azure;
             this.HoursTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HoursTextBox.Location = new System.Drawing.Point(197, 137);
             this.HoursTextBox.Name = "HoursTextBox";
@@ -78,7 +79,7 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.SaveButton.BackColor = System.Drawing.Color.MintCream;
             this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.Location = new System.Drawing.Point(138, 222);
             this.SaveButton.Name = "SaveButton";
@@ -92,6 +93,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(425, 314);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.HoursTextBox);

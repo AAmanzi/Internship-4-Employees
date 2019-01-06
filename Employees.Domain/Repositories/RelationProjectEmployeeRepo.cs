@@ -19,7 +19,7 @@ namespace Employees.Domain.Repositories
             new RelationProjectEmployee("Github", "3", 15),
             new RelationProjectEmployee("Github", "5", 10),
             new RelationProjectEmployee("Edge", "1", 15),
-            new RelationProjectEmployee("Edge", "3", 10),
+            new RelationProjectEmployee("Edge", "3", 20),
             new RelationProjectEmployee("Edge", "4", 5),
         };
 

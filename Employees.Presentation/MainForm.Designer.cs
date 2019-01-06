@@ -36,46 +36,57 @@
             // 
             // ManageEmployeesButton
             // 
+            this.ManageEmployeesButton.BackColor = System.Drawing.Color.MintCream;
+            this.ManageEmployeesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ManageEmployeesButton.Location = new System.Drawing.Point(12, 12);
             this.ManageEmployeesButton.Name = "ManageEmployeesButton";
             this.ManageEmployeesButton.Size = new System.Drawing.Size(269, 101);
             this.ManageEmployeesButton.TabIndex = 0;
             this.ManageEmployeesButton.Text = "Manage Employees";
-            this.ManageEmployeesButton.UseVisualStyleBackColor = true;
+            this.ManageEmployeesButton.UseVisualStyleBackColor = false;
             this.ManageEmployeesButton.Click += new System.EventHandler(this.ManageEmployeesButton_Click);
             // 
             // ManageProjectsButton
             // 
+            this.ManageProjectsButton.BackColor = System.Drawing.Color.MintCream;
+            this.ManageProjectsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ManageProjectsButton.Location = new System.Drawing.Point(336, 12);
             this.ManageProjectsButton.Name = "ManageProjectsButton";
             this.ManageProjectsButton.Size = new System.Drawing.Size(269, 101);
             this.ManageProjectsButton.TabIndex = 1;
             this.ManageProjectsButton.Text = "Manage Projects";
-            this.ManageProjectsButton.UseVisualStyleBackColor = true;
+            this.ManageProjectsButton.UseVisualStyleBackColor = false;
             this.ManageProjectsButton.Click += new System.EventHandler(this.ManageProjectsButton_Click);
             // 
             // ViewEmployeesButton
             // 
+            this.ViewEmployeesButton.BackColor = System.Drawing.Color.MintCream;
+            this.ViewEmployeesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ViewEmployeesButton.Location = new System.Drawing.Point(12, 145);
             this.ViewEmployeesButton.Name = "ViewEmployeesButton";
             this.ViewEmployeesButton.Size = new System.Drawing.Size(269, 101);
             this.ViewEmployeesButton.TabIndex = 2;
             this.ViewEmployeesButton.Text = "View Employee Info";
-            this.ViewEmployeesButton.UseVisualStyleBackColor = true;
+            this.ViewEmployeesButton.UseVisualStyleBackColor = false;
+            this.ViewEmployeesButton.Click += new System.EventHandler(this.ViewEmployeesButton_Click);
             // 
             // ViewProjectsInfo
             // 
+            this.ViewProjectsInfo.BackColor = System.Drawing.Color.MintCream;
+            this.ViewProjectsInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ViewProjectsInfo.Location = new System.Drawing.Point(336, 145);
             this.ViewProjectsInfo.Name = "ViewProjectsInfo";
             this.ViewProjectsInfo.Size = new System.Drawing.Size(269, 101);
             this.ViewProjectsInfo.TabIndex = 3;
             this.ViewProjectsInfo.Text = "View Projects Info";
-            this.ViewProjectsInfo.UseVisualStyleBackColor = true;
+            this.ViewProjectsInfo.UseVisualStyleBackColor = false;
+            this.ViewProjectsInfo.Click += new System.EventHandler(this.ViewProjectsInfoButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(617, 258);
             this.Controls.Add(this.ViewProjectsInfo);
             this.Controls.Add(this.ViewEmployeesButton);

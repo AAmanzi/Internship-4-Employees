@@ -87,6 +87,7 @@
             // 
             // NameTextBox
             // 
+            this.NameTextBox.BackColor = System.Drawing.Color.Azure;
             this.NameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NameTextBox.Location = new System.Drawing.Point(139, 81);
             this.NameTextBox.Name = "NameTextBox";
@@ -97,6 +98,8 @@
             // StartDatePicker
             // 
             this.StartDatePicker.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StartDatePicker.CalendarMonthBackground = System.Drawing.Color.Azure;
+            this.StartDatePicker.CalendarTitleBackColor = System.Drawing.Color.Azure;
             this.StartDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StartDatePicker.Location = new System.Drawing.Point(185, 171);
             this.StartDatePicker.MaxDate = new System.DateTime(2200, 12, 31, 0, 0, 0, 0);
@@ -108,6 +111,8 @@
             // EndDatePicker
             // 
             this.EndDatePicker.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EndDatePicker.CalendarMonthBackground = System.Drawing.Color.Azure;
+            this.EndDatePicker.CalendarTitleBackColor = System.Drawing.Color.Azure;
             this.EndDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EndDatePicker.Location = new System.Drawing.Point(175, 272);
             this.EndDatePicker.MaxDate = new System.DateTime(2200, 12, 31, 0, 0, 0, 0);
@@ -119,8 +124,9 @@
             // 
             // CancelButton
             // 
-            this.CancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.CancelButton.BackColor = System.Drawing.Color.DarkSlateGray;
             this.CancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CancelButton.ForeColor = System.Drawing.Color.White;
             this.CancelButton.Location = new System.Drawing.Point(146, 348);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(158, 52);
@@ -131,7 +137,7 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.SaveButton.BackColor = System.Drawing.Color.MintCream;
             this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.Location = new System.Drawing.Point(529, 348);
             this.SaveButton.Name = "SaveButton";
@@ -143,6 +149,7 @@
             // 
             // EmployeeListBox
             // 
+            this.EmployeeListBox.BackColor = System.Drawing.Color.LightCyan;
             this.EmployeeListBox.FormattingEnabled = true;
             this.EmployeeListBox.Location = new System.Drawing.Point(493, 124);
             this.EmployeeListBox.Name = "EmployeeListBox";
@@ -164,6 +171,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(825, 450);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.EmployeeListBox);
