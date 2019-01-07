@@ -1,17 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Employees.Data.Enums;
 using Employees.Data.Models;
 using Employees.Domain.Repositories;
 
-namespace Employees.Presentation
+namespace Employees.Presentation.Forms
 {
     public partial class ProjectDetailsForm : Form
     {

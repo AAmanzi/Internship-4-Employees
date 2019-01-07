@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Employees.Presentation
+namespace Employees.Presentation.Forms
 {
     public partial class AddHoursForm : Form
     {
@@ -29,6 +22,12 @@ namespace Employees.Presentation
                 AddHoursLabel.Text = @"Add hours to employee";
             }
             HoursToAdd = 0;
+        }
+
+        public sealed override string Text
+        {
+            get => base.Text;
+            set => base.Text = value;
         }
 
         private void HoursToAdd_KeyPress(object sender, KeyPressEventArgs e)

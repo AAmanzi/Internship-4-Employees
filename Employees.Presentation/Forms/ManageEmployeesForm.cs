@@ -1,17 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Employees.Data.Models;
 using Employees.Domain.Repositories;
 using Employees.Infrastructure.Extensions;
 
-namespace Employees.Presentation
+namespace Employees.Presentation.Forms
 {
     public partial class ManageEmployeesForm : Form
     {
@@ -49,7 +43,7 @@ namespace Employees.Presentation
             var confirmDeleteEmployee = new ConfirmForm();
             confirmDeleteEmployee.ShowDialog();
 
-            if (confirmDeleteEmployee.isConfirmed)
+            if (confirmDeleteEmployee.IsConfirmed)
             {
                 foreach (var employee in checkedEmployees)
                 {
@@ -73,7 +67,7 @@ namespace Employees.Presentation
 
         private void AddEmployeeButton_Click(object sender, EventArgs e)
         {
-            var addEmployee = new AddEmployeeForm();
+            var addEmployee = new EditEmployeeForm();
             addEmployee.ShowDialog();
             RefreshEmployeesListBox();
         }
@@ -90,7 +84,7 @@ namespace Employees.Presentation
 
             foreach (var employee in checkedEmployees)
             {
-                var editProject = new AddEmployeeForm(employee.Name, employee.LastName, employee.DateOfBirth, employee.Oib, employee.Position);
+                var editProject = new EditEmployeeForm(employee.Name, employee.LastName, employee.DateOfBirth, employee.Oib, employee.Position);
                 editProject.ShowDialog();
             }
 

@@ -1,17 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Employees.Data.Models;
 using Employees.Domain.Repositories;
 using Employees.Infrastructure.Extensions;
 
-namespace Employees.Presentation
+namespace Employees.Presentation.Forms
 {
     public partial class ManageProjectsForm : Form
     {
@@ -48,7 +42,7 @@ namespace Employees.Presentation
             var confirmDeleteProject = new ConfirmForm();
             confirmDeleteProject.ShowDialog();
 
-            if (confirmDeleteProject.isConfirmed)
+            if (confirmDeleteProject.IsConfirmed)
             {
                 foreach (var project in checkedProjects)
                 {
@@ -65,7 +59,7 @@ namespace Employees.Presentation
 
         private void AddProjectButton_Click(object sender, EventArgs e)
         {
-            var addProject = new AddProjectForm();
+            var addProject = new EditProjectForm();
             addProject.ShowDialog();
             RefreshProjectsListBox();
         }
@@ -82,7 +76,7 @@ namespace Employees.Presentation
 
             foreach (var project in checkedProjects)
             {
-                var editProject = new AddProjectForm(project.Name, project.StartOfProject, project.EndOfProject);
+                var editProject = new EditProjectForm(project.Name, project.StartOfProject, project.EndOfProject);
                 editProject.ShowDialog();
             }
             RefreshProjectsListBox();

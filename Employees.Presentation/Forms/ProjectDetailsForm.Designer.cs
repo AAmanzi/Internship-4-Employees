@@ -1,4 +1,4 @@
-﻿namespace Employees.Presentation
+﻿namespace Employees.Presentation.Forms
 {
     partial class ProjectDetailsForm
     {

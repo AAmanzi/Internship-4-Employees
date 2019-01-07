@@ -1,41 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 using Employees.Data.Enums;
-using Employees.Data.Models;
 using Employees.Domain.Repositories;
 using Employees.Infrastructure.Extensions;
 
-namespace Employees.Presentation
+namespace Employees.Presentation.Forms
 {
-    public partial class AddEmployeeForm : Form
+    public partial class EditEmployeeForm : Form
     {
         public string OldOib { get; set; }
         public bool IsAdd { get; set; }
 
-        public AddEmployeeForm()
+        public EditEmployeeForm()
         {
             InitializeComponent();
+            AddEmployeeLabel.Text = @"Add Employee";
             DateOfBirthPicker.MaxDate = DateTime.Now.Subtract(new TimeSpan(365 * 18 + 4, 0, 0, 0));
             RefreshProjectsListBox();
             RefreshPositionComboBox();
             IsAdd = true;
         }
 
-        public AddEmployeeForm(string name, string lastName, DateTime dateOfBirth, string oib, Position position)
+        public EditEmployeeForm(string name, string lastName, DateTime dateOfBirth, string oib, Position position)
         {
             OldOib = oib;
             IsAdd = false;
 
             InitializeComponent();
-            AddEmployeeLabel.Text = @"Edit Employee";
             NameTextBox.Text = name;
             LastNameTextBox.Text = lastName;
             DateOfBirthPicker.Value = dateOfBirth;
@@ -81,7 +73,7 @@ namespace Employees.Presentation
         {
             var confirmCancel = new ConfirmForm();
             confirmCancel.ShowDialog();
-            if (confirmCancel.isConfirmed)
+            if (confirmCancel.IsConfirmed)
                 Close();
         }
 
@@ -134,11 +126,14 @@ namespace Employees.Presentation
             foreach (var projectItem in ProjectListBox.Items)
             {
                 if (ProjectListBox.CheckedItems.Contains(projectItem)) continue;
-                if (RelationProjectEmployeeRepo.IsEmployeeOnProject(OldOib, projectItem.ToString().GetProjectName()))
-                {
-                    RelationProjectEmployeeRepo.TryRemove(
-                        RelationProjectEmployeeRepo.GetRelation(OldOib, projectItem.ToString().GetProjectName()));
-                }
+                if (!RelationProjectEmployeeRepo.IsEmployeeOnProject(OldOib, projectItem.ToString().GetProjectName())
+                ) continue;
+                if (RelationProjectEmployeeRepo.TryRemove(
+                    RelationProjectEmployeeRepo.GetRelation(OldOib, projectItem.ToString().GetProjectName())))
+                    continue;
+                var lastEmployeeError = new ErrorForm($"{NameTextBox.Text} could not be removed from project {projectItem.ToString().GetProjectName()}\n" +
+                                                      "He is the last employee on that project");
+                lastEmployeeError.ShowDialog();
             }
 
             foreach (var projectName in checkedProjectNames)
@@ -176,11 +171,6 @@ namespace Employees.Presentation
         }
 
         private void LastNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar);
-        }
-
-        private void PositionTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar);
         }

@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Employees.Presentation
+namespace Employees.Presentation.Forms
 {
     public partial class ConfirmForm : Form
     {
-        public bool isConfirmed;
+        public bool IsConfirmed;
         public ConfirmForm()
         {
             InitializeComponent();
@@ -20,13 +13,13 @@ namespace Employees.Presentation
 
         private void ConfirmYesButton_Click(object sender, EventArgs e)
         {
-            isConfirmed = true;
+            IsConfirmed = true;
             Close();
         }
 
         private void ConfirmNoButton_Click(object sender, EventArgs e)
         {
-            isConfirmed = false;
+            IsConfirmed = false;
             Close();
         }
     }

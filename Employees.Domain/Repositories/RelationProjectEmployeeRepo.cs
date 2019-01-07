@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Employees.Data.Models;
 
 namespace Employees.Domain.Repositories
 {
     public static class RelationProjectEmployeeRepo
     {
-        private static List<RelationProjectEmployee> _allRelations = new List<RelationProjectEmployee>()
+        private static readonly List<RelationProjectEmployee> AllRelations = new List<RelationProjectEmployee>()
         {
             new RelationProjectEmployee("Ark", "1", 10),
             new RelationProjectEmployee("Ark", "4", 15),
@@ -25,12 +22,12 @@ namespace Employees.Domain.Repositories
 
         public static List<RelationProjectEmployee> GetAllRelations()
         {
-            return _allRelations;
+            return AllRelations;
         }
 
         public static RelationProjectEmployee GetRelation(string oib, string nameOfProject)
         {
-            foreach (var relation in _allRelations)
+            foreach (var relation in AllRelations)
             {
                 if (relation.Oib == oib && relation.NameOfProject == nameOfProject)
                     return relation;
@@ -40,21 +37,21 @@ namespace Employees.Domain.Repositories
 
         public static bool TryAdd(string nameOfProject, string oib, int hoursOfWork)
         {
-            foreach (var relation in _allRelations)
+            foreach (var relation in AllRelations)
             {
                 if (relation.NameOfProject == nameOfProject && relation.Oib == oib)
                     return false;
             }
 
             var newRelation = new RelationProjectEmployee(nameOfProject, oib, hoursOfWork);
-            _allRelations.Add(newRelation);
+            AllRelations.Add(newRelation);
             return true;
         }
 
         public static List<Employee> GetEmployeesOnProject(string nameOfProject)
         {
             var employeesOnProject = new List<Employee>();
-            foreach (var relation in _allRelations)
+            foreach (var relation in AllRelations)
             {
                 if(relation.NameOfProject == nameOfProject)
                     employeesOnProject.Add(EmployeeRepo.GetEmployeeByOib(relation.Oib));
@@ -65,7 +62,7 @@ namespace Employees.Domain.Repositories
         public static List<Project> GetProjectsByEmployee(string oib)
         {
             var projectsByEmployee = new List<Project>();
-            foreach (var relation in _allRelations)
+            foreach (var relation in AllRelations)
             {
                 if(relation.Oib == oib)
                     projectsByEmployee.Add(ProjectRepo.GetProjectByName(relation.NameOfProject));
@@ -102,20 +99,17 @@ namespace Employees.Domain.Repositories
 
         public static bool TryRemove(RelationProjectEmployee toRemove)
         {
-            foreach (var project in GetProjectsByEmployee(toRemove.Oib))
+            if (GetEmployeesOnProject(toRemove.NameOfProject).Count == 1)
             {
-                if (GetEmployeesOnProject(project.Name).Count == 1)
-                {
-                    return false;
-                }
+                return false;
             }
-            _allRelations.Remove(toRemove);
+            AllRelations.Remove(toRemove);
             return true;
         }
 
         public static void Remove(RelationProjectEmployee toRemove)
         {
-            _allRelations.Remove(toRemove);
+            AllRelations.Remove(toRemove);
         }
     }
 }

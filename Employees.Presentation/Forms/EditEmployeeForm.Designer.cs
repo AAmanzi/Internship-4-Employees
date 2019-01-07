@@ -1,6 +1,6 @@
-﻿namespace Employees.Presentation
+﻿namespace Employees.Presentation.Forms
 {
-    partial class AddEmployeeForm
+    partial class EditEmployeeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -51,9 +51,9 @@
             this.AddEmployeeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddEmployeeLabel.Location = new System.Drawing.Point(164, 23);
             this.AddEmployeeLabel.Name = "AddEmployeeLabel";
-            this.AddEmployeeLabel.Size = new System.Drawing.Size(189, 31);
+            this.AddEmployeeLabel.Size = new System.Drawing.Size(188, 31);
             this.AddEmployeeLabel.TabIndex = 0;
-            this.AddEmployeeLabel.Text = "Add Employee";
+            this.AddEmployeeLabel.Text = "Edit Employee";
             this.AddEmployeeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // NameLabel
@@ -206,7 +206,7 @@
             this.PositionComboBox.Size = new System.Drawing.Size(304, 33);
             this.PositionComboBox.TabIndex = 15;
             // 
-            // AddEmployeeForm
+            // EditEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -227,7 +227,7 @@
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.AddEmployeeLabel);
-            this.Name = "AddEmployeeForm";
+            this.Name = "EditEmployeeForm";
             this.Text = "AddEmployeeForm";
             this.ResumeLayout(false);
             this.PerformLayout();

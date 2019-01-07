@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,46 +47,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddEmployeeForm.cs">
+    <Compile Include="Forms\EditEmployeeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddEmployeeForm.Designer.cs">
-      <DependentUpon>AddEmployeeForm.cs</DependentUpon>
+    <Compile Include="Forms\EditEmployeeForm.Designer.cs">
+      <DependentUpon>EditEmployeeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddHoursForm.cs">
+    <Compile Include="Forms\AddHoursForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddHoursForm.Designer.cs">
+    <Compile Include="Forms\AddHoursForm.Designer.cs">
       <DependentUpon>AddHoursForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddProjectForm.cs">
+    <Compile Include="Forms\EditProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddProjectForm.Designer.cs">
-      <DependentUpon>AddProjectForm.cs</DependentUpon>
+    <Compile Include="Forms\EditProjectForm.Designer.cs">
+      <DependentUpon>EditProjectForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AllEmployeesInfo.cs">
+    <Compile Include="Forms\AllEmployeesInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AllEmployeesInfo.Designer.cs">
-      <DependentUpon>AllEmployeesInfo.cs</DependentUpon>
+    <Compile Include="Forms\AllEmployeesInfoForm.Designer.cs">
+      <DependentUpon>AllEmployeesInfoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AllProjectsInfoForm.cs">
+    <Compile Include="Forms\AllProjectsInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AllProjectsInfoForm.Designer.cs">
+    <Compile Include="Forms\AllProjectsInfoForm.Designer.cs">
       <DependentUpon>AllProjectsInfoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConfirmForm.cs">
+    <Compile Include="Forms\ConfirmForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConfirmForm.Designer.cs">
+    <Compile Include="Forms\ConfirmForm.Designer.cs">
       <DependentUpon>ConfirmForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ErrorForm.cs">
+    <Compile Include="Forms\ErrorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ErrorForm.Designer.cs">
+    <Compile Include="Forms\ErrorForm.Designer.cs">
       <DependentUpon>ErrorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
@@ -94,57 +95,57 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ManageEmployeesForm.cs">
+    <Compile Include="Forms\ManageEmployeesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ManageEmployeesForm.Designer.cs">
+    <Compile Include="Forms\ManageEmployeesForm.Designer.cs">
       <DependentUpon>ManageEmployeesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ManageProjectsForm.cs">
+    <Compile Include="Forms\ManageProjectsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ManageProjectsForm.Designer.cs">
+    <Compile Include="Forms\ManageProjectsForm.Designer.cs">
       <DependentUpon>ManageProjectsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="ProjectDetailsForm.cs">
+    <Compile Include="Forms\ProjectDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectDetailsForm.Designer.cs">
+    <Compile Include="Forms\ProjectDetailsForm.Designer.cs">
       <DependentUpon>ProjectDetailsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddEmployeeForm.resx">
-      <DependentUpon>AddEmployeeForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\EditEmployeeForm.resx">
+      <DependentUpon>EditEmployeeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddHoursForm.resx">
+    <EmbeddedResource Include="Forms\AddHoursForm.resx">
       <DependentUpon>AddHoursForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddProjectForm.resx">
-      <DependentUpon>AddProjectForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\EditProjectForm.resx">
+      <DependentUpon>EditProjectForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AllEmployeesInfo.resx">
-      <DependentUpon>AllEmployeesInfo.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AllEmployeesInfoForm.resx">
+      <DependentUpon>AllEmployeesInfoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AllProjectsInfoForm.resx">
+    <EmbeddedResource Include="Forms\AllProjectsInfoForm.resx">
       <DependentUpon>AllProjectsInfoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ConfirmForm.resx">
+    <EmbeddedResource Include="Forms\ConfirmForm.resx">
       <DependentUpon>ConfirmForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ErrorForm.resx">
+    <EmbeddedResource Include="Forms\ErrorForm.resx">
       <DependentUpon>ErrorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ManageEmployeesForm.resx">
+    <EmbeddedResource Include="Forms\ManageEmployeesForm.resx">
       <DependentUpon>ManageEmployeesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ManageProjectsForm.resx">
+    <EmbeddedResource Include="Forms\ManageProjectsForm.resx">
       <DependentUpon>ManageProjectsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectDetailsForm.resx">
+    <EmbeddedResource Include="Forms\ProjectDetailsForm.resx">
       <DependentUpon>ProjectDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

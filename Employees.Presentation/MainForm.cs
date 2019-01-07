@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Employees.Presentation.Forms;
 
 namespace Employees.Presentation
 {
@@ -37,7 +31,7 @@ namespace Employees.Presentation
 
         private void ViewEmployeesButton_Click(object sender, EventArgs e)
         {
-            var allEmployeesInfo = new AllEmployeesInfo();
+            var allEmployeesInfo = new AllEmployeesInfoForm();
             allEmployeesInfo.ShowDialog();
         }
     }

@@ -1,6 +1,6 @@
-﻿namespace Employees.Presentation
+﻿namespace Employees.Presentation.Forms
 {
-    partial class AddProjectForm
+    partial class EditProjectForm
     {
         /// <summary>
         /// Required designer variable.
@@ -47,9 +47,9 @@
             this.AddProjectLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddProjectLabel.Location = new System.Drawing.Point(150, 19);
             this.AddProjectLabel.Name = "AddProjectLabel";
-            this.AddProjectLabel.Size = new System.Drawing.Size(154, 31);
+            this.AddProjectLabel.Size = new System.Drawing.Size(153, 31);
             this.AddProjectLabel.TabIndex = 1;
-            this.AddProjectLabel.Text = "Add Project";
+            this.AddProjectLabel.Text = "Edit Project";
             this.AddProjectLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // NameLabel
@@ -167,7 +167,7 @@
             this.label1.Text = "Choose employees for project";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // AddProjectForm
+            // EditProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -184,7 +184,7 @@
             this.Controls.Add(this.StartDateLabel);
             this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.AddProjectLabel);
-            this.Name = "AddProjectForm";
+            this.Name = "EditProjectForm";
             this.Text = "AddProjectForm";
             this.ResumeLayout(false);
             this.PerformLayout();

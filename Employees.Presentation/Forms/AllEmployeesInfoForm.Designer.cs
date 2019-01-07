@@ -1,6 +1,6 @@
-﻿namespace Employees.Presentation
+﻿namespace Employees.Presentation.Forms
 {
-    partial class AllEmployeesInfo
+    partial class AllEmployeesInfoForm
     {
         /// <summary>
         /// Required designer variable.

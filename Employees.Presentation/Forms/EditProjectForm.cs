@@ -1,36 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Employees.Domain.Repositories;
 using Employees.Infrastructure.Extensions;
 
-namespace Employees.Presentation
+namespace Employees.Presentation.Forms
 {
-    public partial class AddProjectForm : Form
+    public partial class EditProjectForm : Form
     {
         public string OldName { get; set; }
         public bool IsAdd { get; set; }
-        public AddProjectForm()
+        public EditProjectForm()
         {
             InitializeComponent();
+            AddProjectLabel.Text = @"Add Project";
             EndDatePicker.Value = StartDatePicker.Value.AddDays(1);
             EndDatePicker.MinDate = StartDatePicker.Value;
             RefreshEmployeesListBox();
             IsAdd = true;
         }
 
-        public AddProjectForm(string projectName, DateTime startDate, DateTime endDate)
+        public EditProjectForm(string projectName, DateTime startDate, DateTime endDate)
         {
             OldName = projectName;
 
             InitializeComponent();
-            AddProjectLabel.Text = @"Edit Project";
             NameTextBox.Text = projectName;
             StartDatePicker.Value = startDate;
             EndDatePicker.Value = endDate;
@@ -42,7 +36,7 @@ namespace Employees.Presentation
         {
             var confirmCancel = new ConfirmForm();
             confirmCancel.ShowDialog();
-            if (confirmCancel.isConfirmed)
+            if (confirmCancel.IsConfirmed)
                 Close();
         }
 
