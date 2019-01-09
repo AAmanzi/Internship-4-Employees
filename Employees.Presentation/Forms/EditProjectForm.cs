@@ -15,7 +15,6 @@ namespace Employees.Presentation.Forms
             InitializeComponent();
             AddProjectLabel.Text = @"Add Project";
             EndDatePicker.Value = StartDatePicker.Value.AddDays(1);
-            EndDatePicker.MinDate = StartDatePicker.Value;
             RefreshEmployeesListBox();
             IsAdd = true;
         }
@@ -101,6 +100,13 @@ namespace Employees.Presentation.Forms
                     existingProjectError.ShowDialog();
                     return;
                 }
+            }
+
+            if (StartDatePicker.Value > EndDatePicker.Value)
+            {
+                var dateError = new ErrorForm("A project cannot end before it has started!");
+                dateError.ShowDialog();
+                return;
             }
 
             foreach (var employeeItem in EmployeeListBox.Items)

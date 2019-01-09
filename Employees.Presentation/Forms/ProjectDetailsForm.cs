@@ -40,7 +40,7 @@ namespace Employees.Presentation.Forms
                     foreach (var employee in positionEmployees)
                     {
                         detailsText +=
-                            $"\t{employee.Name} {employee.LastName} ({RelationProjectEmployeeRepo.GetRelation(employee.Oib, project.Name).HoursOfWork})\n";
+                            $"\t{employee.Name} {employee.LastName} ({RelationProjectEmployeeRepo.GetRelation(employee.Oib, project.Name).HoursOfWork} hours)\n";
                     }
 
                     detailsText += "\n";

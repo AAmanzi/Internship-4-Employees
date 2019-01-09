@@ -31,6 +31,7 @@ namespace Employees.Presentation.Forms
             NameTextBox.Text = name;
             LastNameTextBox.Text = lastName;
             DateOfBirthPicker.Value = dateOfBirth;
+            DateOfBirthPicker.MaxDate = DateTime.Now.Subtract(new TimeSpan(365 * 18 + 4, 0, 0, 0));
             OibTextBox.Text = oib;
             RefreshPositionComboBox();
             PositionComboBox.Text = position.ToString();
