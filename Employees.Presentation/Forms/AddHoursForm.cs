@@ -37,7 +37,8 @@ namespace Employees.Presentation.Forms
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            HoursToAdd = int.Parse(HoursTextBox.Text);
+            if (!string.IsNullOrWhiteSpace(HoursTextBox.Text))
+                HoursToAdd = int.Parse(HoursTextBox.Text);
             Close();
         }
     }
