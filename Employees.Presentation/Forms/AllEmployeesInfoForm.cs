@@ -26,15 +26,11 @@ namespace Employees.Presentation.Forms
                 AddEmployeeSubItems(employeeItem, employee);
                 SetEmployeeProjects(employeeItem, employee);
 
-
-
-
                 EmployeeInfoListView.Items.Add(employeeItem);
             }
-            
         }
 
-        private void AddEmployeeColumns(ListView destination)
+        private static void AddEmployeeColumns(ListView destination)
         {
             destination.Columns.Add("Name", -2, HorizontalAlignment.Left);
             destination.Columns.Add("Last name", -2, HorizontalAlignment.Left);
@@ -47,7 +43,7 @@ namespace Employees.Presentation.Forms
             destination.Columns.Add("Upcoming projects", -2, HorizontalAlignment.Left);
         }
 
-        private void AddEmployeeSubItems(ListViewItem destination, Employee source)
+        private static void AddEmployeeSubItems(ListViewItem destination, Employee source)
         {
             destination.SubItems.Add(source.LastName);
             destination.SubItems.Add($"{source.DateOfBirth:d}");
