@@ -80,40 +80,7 @@ namespace Employees.Presentation.Forms
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(NameTextBox.Text) ||
-                string.IsNullOrWhiteSpace(LastNameTextBox.Text) ||
-                string.IsNullOrWhiteSpace(OibTextBox.Text) ||
-                string.IsNullOrWhiteSpace(PositionComboBox.Text))
-            {
-                new ErrorForm("You are missing some required fields!").ShowDialog();
-                return;
-            }
-
-            if (!OibTextBox.Text.IsOibValid())
-            {
-                new ErrorForm("That is not a valid OIB!").ShowDialog();
-                return;
-            }
-
-            if (IsAdd)
-            {
-                OldOib = OibTextBox.Text;
-                if (EmployeeRepo.GetEmployeeByOib(OldOib) != null)
-                {
-                    var existingEmployeeError = new ErrorForm("An employee with that OIB already exists!");
-                    existingEmployeeError.ShowDialog();
-                    return;
-                }
-            }
-            else
-            {
-                if (OldOib != OibTextBox.Text && EmployeeRepo.GetEmployeeByOib(OibTextBox.Text) != null)
-                {
-                    var existingEmployeeError = new ErrorForm("An employee with that OIB already exists!");
-                    existingEmployeeError.ShowDialog();
-                    return;
-                }
-            }
+            if (CheckForErrors()) return;
 
             NameTextBox.Text = NameTextBox.Text.TrimAndRemoveWhiteSpaces().AllFirstLettersToUpper();
             LastNameTextBox.Text = LastNameTextBox.Text.TrimAndRemoveWhiteSpaces().AllFirstLettersToUpper();
@@ -124,6 +91,32 @@ namespace Employees.Presentation.Forms
                 checkedProjectNames.Add(checkedProjectItem.ToString().GetProjectName());
             }
 
+            if(!TryRemoveUncheckedProjects()) return;
+            AddProjectsToEmployee(checkedProjectNames);
+
+            EmployeeRepo.Remove(EmployeeRepo.GetEmployeeByOib(OldOib));
+            UpdateOib();
+
+            EmployeeRepo.TryAdd(NameTextBox.Text, LastNameTextBox.Text, DateOfBirthPicker.Value, OibTextBox.Text,
+                (Position)Enum.Parse(typeof(Position), PositionComboBox.Text));
+
+            Close();
+        }
+
+        private void UpdateOib()
+        {
+            foreach (var relation
+                in RelationProjectEmployeeRepo.GetAllRelations())
+            {
+                if (relation.Oib == OldOib)
+                {
+                    relation.Oib = OibTextBox.Text;
+                }
+            }
+        }
+
+        private bool TryRemoveUncheckedProjects()
+        {
             foreach (var projectItem in ProjectListBox.Items)
             {
                 if (ProjectListBox.CheckedItems.Contains(projectItem)) continue;
@@ -135,29 +128,54 @@ namespace Employees.Presentation.Forms
                 var lastEmployeeError = new ErrorForm($"{NameTextBox.Text} could not be removed from project {projectItem.ToString().GetProjectName()}\n" +
                                                       "He is the last employee on that project");
                 lastEmployeeError.ShowDialog();
+                return false;
             }
+            return true;
+        }
 
-            foreach (var projectName in checkedProjectNames)
+        private void AddProjectsToEmployee(IEnumerable<string> projectNameListSource)
+        {
+            foreach (var projectName in projectNameListSource)
             {
                 if (RelationProjectEmployeeRepo.IsEmployeeOnProject(OldOib, projectName)) continue;
                 var addHours = new AddHoursForm(projectName, NameTextBox.Text, true);
                 addHours.ShowDialog();
                 RelationProjectEmployeeRepo.TryAdd(projectName, OldOib, addHours.HoursToAdd);
             }
+        }
 
-            EmployeeRepo.Remove(EmployeeRepo.GetEmployeeByOib(OldOib));
-            foreach (var relation
-                in RelationProjectEmployeeRepo.GetAllRelations())
+        private bool CheckForErrors()
+        {
+            if (string.IsNullOrWhiteSpace(NameTextBox.Text) ||
+                string.IsNullOrWhiteSpace(LastNameTextBox.Text) ||
+                string.IsNullOrWhiteSpace(OibTextBox.Text) ||
+                string.IsNullOrWhiteSpace(PositionComboBox.Text))
             {
-                if (relation.Oib == OldOib)
-                {
-                    relation.Oib = OibTextBox.Text;
-                }
+                new ErrorForm("You are missing some required fields!").ShowDialog();
+                return true;
             }
-            EmployeeRepo.TryAdd(NameTextBox.Text, LastNameTextBox.Text, DateOfBirthPicker.Value, OibTextBox.Text,
-                (Position)Enum.Parse(typeof(Position), PositionComboBox.Text));
 
-            Close();
+            if (!OibTextBox.Text.IsOibValid())
+            {
+                new ErrorForm("That is not a valid OIB!").ShowDialog();
+                return true;
+            }
+
+            if (IsAdd)
+            {
+                OldOib = OibTextBox.Text;
+                if (EmployeeRepo.GetEmployeeByOib(OldOib) == null) return false;
+                var existingEmployeeError = new ErrorForm("An employee with that OIB already exists!");
+                existingEmployeeError.ShowDialog();
+                return true;
+            }
+            else
+            {
+                if (OldOib == OibTextBox.Text || EmployeeRepo.GetEmployeeByOib(OibTextBox.Text) == null) return false;
+                var existingEmployeeError = new ErrorForm("An employee with that OIB already exists!");
+                existingEmployeeError.ShowDialog();
+                return true;
+            }
         }
 
         //Key disables
