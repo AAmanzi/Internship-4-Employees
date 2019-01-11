@@ -74,7 +74,7 @@ namespace Employees.Presentation.Forms
             if(CheckForErrors(checkedEmployeeOibList)) return;
 
             RemoveUncheckedEmployees();
-            AddCheckedEmployees(checkedEmployeeOibList);
+            AddEmployeesToProject(checkedEmployeeOibList);
 
             ProjectRepo.Remove(ProjectRepo.GetProjectByName(OldName));
             UpdateProjectName();
@@ -98,9 +98,9 @@ namespace Employees.Presentation.Forms
             }
         }
 
-        private void AddCheckedEmployees(IEnumerable<string> checkedEmployeeOibList)
+        private void AddEmployeesToProject(IEnumerable<string> oibListSource)
         {
-            foreach (var employeeOib in checkedEmployeeOibList)
+            foreach (var employeeOib in oibListSource)
             {
                 if (RelationProjectEmployeeRepo.IsEmployeeOnProject(employeeOib, OldName)) continue;
                 var addHours = new AddHoursForm(NameTextBox.Text, EmployeeRepo.GetEmployeeByOib(employeeOib).Name, false);
