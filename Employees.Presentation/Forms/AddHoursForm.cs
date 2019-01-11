@@ -6,10 +6,10 @@ namespace Employees.Presentation.Forms
     public partial class AddHoursForm : Form
     {
         public int HoursToAdd { get; set; }
-        public AddHoursForm(string projectName, string employeeName, bool isAddEmployee)
+        public AddHoursForm(string projectName, string employeeName, bool isAddingToProject)
         {
             InitializeComponent();
-            if (isAddEmployee)
+            if (isAddingToProject)
             {
                 Text = employeeName;
                 NameLabel.Text = projectName;

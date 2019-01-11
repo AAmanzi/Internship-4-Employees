@@ -63,52 +63,28 @@ namespace Employees.Presentation.Forms
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(NameTextBox.Text))
-            {
-                new ErrorForm("You are missing some required fields!").ShowDialog();
-                return;
-            }
+            NameTextBox.Text = NameTextBox.Text.TrimAndRemoveWhiteSpaces().FirstLetterToUpper();
 
             var checkedEmployeeOibList = new List<string>();
             foreach (var checkedEmployeeItem in EmployeeListBox.CheckedItems)
             {
                 checkedEmployeeOibList.Add(checkedEmployeeItem.ToString().GetOib());
             }
-            if (checkedEmployeeOibList.Count == 0)
-            {
-                new ErrorForm("A project must have at least one employee!").ShowDialog();
-                return;
-            }
 
-            NameTextBox.Text = NameTextBox.Text.TrimAndRemoveWhiteSpaces().FirstLetterToUpper();
+            if(CheckForErrors(checkedEmployeeOibList)) return;
 
-            if (IsAdd)
-            {
-                OldName = NameTextBox.Text;
-                if (ProjectRepo.GetProjectByName(OldName) != null)
-                {
-                    var existingProjectError = new ErrorForm("A project with that name already exists!");
-                    existingProjectError.ShowDialog();
-                    return;
-                }
-            }
-            else
-            {
-                if (OldName != NameTextBox.Text && ProjectRepo.GetProjectByName(NameTextBox.Text) != null)
-                {
-                    var existingProjectError = new ErrorForm("A project with that name already exists!");
-                    existingProjectError.ShowDialog();
-                    return;
-                }
-            }
+            RemoveUncheckedEmployees();
+            AddCheckedEmployees(checkedEmployeeOibList);
 
-            if (StartDatePicker.Value > EndDatePicker.Value)
-            {
-                var dateError = new ErrorForm("A project cannot end before it has started!");
-                dateError.ShowDialog();
-                return;
-            }
+            ProjectRepo.Remove(ProjectRepo.GetProjectByName(OldName));
+            UpdateProjectName();
 
+            ProjectRepo.TryAdd(NameTextBox.Text, StartDatePicker.Value, EndDatePicker.Value);
+            Close();
+        }
+
+        private void RemoveUncheckedEmployees()
+        {
             foreach (var employeeItem in EmployeeListBox.Items)
             {
                 if (EmployeeListBox.CheckedItems.Contains(employeeItem)) continue;
@@ -120,7 +96,10 @@ namespace Employees.Presentation.Forms
                             OldName));
                 }
             }
+        }
 
+        private void AddCheckedEmployees(IEnumerable<string> checkedEmployeeOibList)
+        {
             foreach (var employeeOib in checkedEmployeeOibList)
             {
                 if (RelationProjectEmployeeRepo.IsEmployeeOnProject(employeeOib, OldName)) continue;
@@ -128,8 +107,10 @@ namespace Employees.Presentation.Forms
                 addHours.ShowDialog();
                 RelationProjectEmployeeRepo.TryAdd(OldName, employeeOib, addHours.HoursToAdd);
             }
+        }
 
-            ProjectRepo.Remove(ProjectRepo.GetProjectByName(OldName));
+        private void UpdateProjectName()
+        {
             foreach (var relation
                 in RelationProjectEmployeeRepo.GetAllRelations())
             {
@@ -138,9 +119,46 @@ namespace Employees.Presentation.Forms
                     relation.NameOfProject = NameTextBox.Text;
                 }
             }
+        }
 
-            ProjectRepo.TryAdd(NameTextBox.Text, StartDatePicker.Value, EndDatePicker.Value);
-            Close();
+        private bool CheckForErrors(IReadOnlyCollection<string> oibListToCheck)
+        {
+            if (string.IsNullOrWhiteSpace(NameTextBox.Text))
+            {
+                new ErrorForm("You are missing some required fields!").ShowDialog();
+                return true;
+            }
+
+            if (oibListToCheck.Count == 0)
+            {
+                new ErrorForm("A project must have at least one employee!").ShowDialog();
+                return true;
+            }
+
+            if (IsAdd)
+            {
+                OldName = NameTextBox.Text;
+                if (ProjectRepo.GetProjectByName(OldName) != null)
+                {
+                    var existingProjectError = new ErrorForm("A project with that name already exists!");
+                    existingProjectError.ShowDialog();
+                    return true;
+                }
+            }
+            else
+            {
+                if (OldName != NameTextBox.Text && ProjectRepo.GetProjectByName(NameTextBox.Text) != null)
+                {
+                    var existingProjectError = new ErrorForm("A project with that name already exists!");
+                    existingProjectError.ShowDialog();
+                    return true;
+                }
+            }
+
+            if (StartDatePicker.Value <= EndDatePicker.Value) return false;
+            var dateError = new ErrorForm("A project cannot end before it has started!");
+            dateError.ShowDialog();
+            return true;
         }
 
         //Key disables
