@@ -9,11 +9,11 @@ namespace Employees.Domain.Repositories
     {
         private static readonly List<Employee> AllEmployees = new List<Employee>()
         {
-            new Employee("Stipe", "Stipic", DateTime.Now.Subtract(new TimeSpan(366*20, 0, 0, 0)), "1", Position.Developer),
-            new Employee("Stipe", "Stipic", DateTime.Now.Subtract(new TimeSpan(366*29, 0, 0, 0)), "2", Position.Designer),
-            new Employee("Stipe", "Stipic", DateTime.Now.Subtract(new TimeSpan(366*24, 0, 0, 0)), "3", Position.ProjectManager),
-            new Employee("Stipe", "Stipic", DateTime.Now.Subtract(new TimeSpan(366*26, 0, 0, 0)), "4", Position.Slicer),
-            new Employee("Stipe", "Stipic", DateTime.Now.Subtract(new TimeSpan(366*32, 0, 0, 0)), "5", Position.Developer),
+            new Employee("Stipe", "Stipic", DateTime.Now.Subtract(new TimeSpan(366*20, 0, 0, 0)), "12345678901", Position.Developer),
+            new Employee("Mate", "Matic", DateTime.Now.Subtract(new TimeSpan(366*29, 0, 0, 0)), "12345678902", Position.Designer),
+            new Employee("Ante", "Antic", DateTime.Now.Subtract(new TimeSpan(366*24, 0, 0, 0)), "12345678903", Position.ProjectManager),
+            new Employee("Marija", "Maric", DateTime.Now.Subtract(new TimeSpan(366*26, 0, 0, 0)), "12345678904", Position.Slicer),
+            new Employee("Boris", "Boric", DateTime.Now.Subtract(new TimeSpan(366*32, 0, 0, 0)), "12345678905", Position.Developer),
         };
 
         public static List<Employee> GetEmployees()

@@ -8,16 +8,16 @@ namespace Employees.Domain.Repositories
     {
         private static readonly List<RelationProjectEmployee> AllRelations = new List<RelationProjectEmployee>()
         {
-            new RelationProjectEmployee("Ark", "1", 10),
-            new RelationProjectEmployee("Ark", "4", 15),
-            new RelationProjectEmployee("Ark", "5", 15),
-            new RelationProjectEmployee("Github", "1", 20),
-            new RelationProjectEmployee("Github", "2", 10),
-            new RelationProjectEmployee("Github", "3", 15),
-            new RelationProjectEmployee("Github", "5", 10),
-            new RelationProjectEmployee("Edge", "1", 15),
-            new RelationProjectEmployee("Edge", "3", 20),
-            new RelationProjectEmployee("Edge", "4", 5),
+            new RelationProjectEmployee("Ark", "12345678901", 10),
+            new RelationProjectEmployee("Ark", "12345678904", 15),
+            new RelationProjectEmployee("Ark", "12345678905", 15),
+            new RelationProjectEmployee("Github", "12345678901", 20),
+            new RelationProjectEmployee("Github", "12345678902", 10),
+            new RelationProjectEmployee("Github", "12345678903", 15),
+            new RelationProjectEmployee("Github", "12345678905", 10),
+            new RelationProjectEmployee("Edge", "12345678901", 15),
+            new RelationProjectEmployee("Edge", "12345678903", 20),
+            new RelationProjectEmployee("Edge", "12345678904", 5),
         };
 
         public static List<RelationProjectEmployee> GetAllRelations()
