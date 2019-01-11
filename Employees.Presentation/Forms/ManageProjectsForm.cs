@@ -41,20 +41,23 @@ namespace Employees.Presentation.Forms
 
             var confirmDeleteProject = new ConfirmForm();
             confirmDeleteProject.ShowDialog();
+            if (!confirmDeleteProject.IsConfirmed) return;
 
-            if (confirmDeleteProject.IsConfirmed)
+            foreach (var project in checkedProjects)
             {
-                foreach (var project in checkedProjects)
-                {
-                    ProjectRepo.Remove(project);
-                    foreach (var employee in RelationProjectEmployeeRepo.GetEmployeesOnProject(project.Name))
-                    {
-                        RelationProjectEmployeeRepo.Remove(RelationProjectEmployeeRepo.GetRelation(employee.Oib, project.Name));
-                    }
-                }
+                Delete(project);
             }
 
             RefreshProjectsListBox();
+        }
+
+        private static void Delete(Project toDelete)
+        {
+            ProjectRepo.Remove(toDelete);
+            foreach (var employee in RelationProjectEmployeeRepo.GetEmployeesOnProject(toDelete.Name))
+            {
+                RelationProjectEmployeeRepo.Remove(RelationProjectEmployeeRepo.GetRelation(employee.Oib, toDelete.Name));
+            }
         }
 
         private void AddProjectButton_Click(object sender, EventArgs e)
