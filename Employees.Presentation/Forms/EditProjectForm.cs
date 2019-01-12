@@ -10,6 +10,7 @@ namespace Employees.Presentation.Forms
     {
         public string OldName { get; set; }
         public bool IsAdd { get; set; }
+        private readonly List<string> _checkedEmployeesOibList = new List<string>();
         public EditProjectForm()
         {
             InitializeComponent();
@@ -64,17 +65,18 @@ namespace Employees.Presentation.Forms
         private void SaveButton_Click(object sender, EventArgs e)
         {
             NameTextBox.Text = NameTextBox.Text.TrimAndRemoveWhiteSpaces().FirstLetterToUpper();
-
-            var checkedEmployeeOibList = new List<string>();
+            
             foreach (var checkedEmployeeItem in EmployeeListBox.CheckedItems)
             {
-                checkedEmployeeOibList.Add(checkedEmployeeItem.ToString().GetOib());
+                _checkedEmployeesOibList.Add(checkedEmployeeItem.ToString().GetOib());
             }
 
-            if(CheckForErrors(checkedEmployeeOibList)) return;
+            if(CheckForErrors()) return;
+
+            AddEmployeesToProject();
+            if (CheckForErrors()) return;
 
             RemoveUncheckedEmployees();
-            AddEmployeesToProject(checkedEmployeeOibList);
 
             ProjectRepo.Remove(ProjectRepo.GetProjectByName(OldName));
             UpdateProjectName();
@@ -98,14 +100,33 @@ namespace Employees.Presentation.Forms
             }
         }
 
-        private void AddEmployeesToProject(IEnumerable<string> oibListSource)
+        private void AddEmployeesToProject()
         {
-            foreach (var employeeOib in oibListSource)
+            var employeesToUncheck = new List<string>();
+            foreach (var employeeOib in _checkedEmployeesOibList)
             {
                 if (RelationProjectEmployeeRepo.IsEmployeeOnProject(employeeOib, OldName)) continue;
                 var addHours = new AddHoursForm(NameTextBox.Text, EmployeeRepo.GetEmployeeByOib(employeeOib).Name, false);
                 addHours.ShowDialog();
+                if (addHours.HoursToAdd == 0)
+                {
+                    var hoursError =
+                        new ErrorForm(
+                            $"Employee {EmployeeRepo.GetEmployeeByOib(employeeOib).Name} could not be added!\nAn employee cannot work 0 hours on a project!");
+                    hoursError.ShowDialog();
+                    employeesToUncheck.Add(employeeOib);
+                    continue;
+                }
                 RelationProjectEmployeeRepo.TryAdd(OldName, employeeOib, addHours.HoursToAdd);
+            }
+            UncheckEmployees(employeesToUncheck);
+        }
+
+        private void UncheckEmployees(IEnumerable<string> oibList)
+        {
+            foreach (var oib in oibList)
+            {
+                _checkedEmployeesOibList.Remove(oib);
             }
         }
 
@@ -121,7 +142,7 @@ namespace Employees.Presentation.Forms
             }
         }
 
-        private bool CheckForErrors(IReadOnlyCollection<string> oibListToCheck)
+        private bool CheckForErrors()
         {
             if (string.IsNullOrWhiteSpace(NameTextBox.Text))
             {
@@ -129,7 +150,7 @@ namespace Employees.Presentation.Forms
                 return true;
             }
 
-            if (oibListToCheck.Count == 0)
+            if (_checkedEmployeesOibList.Count == 0)
             {
                 new ErrorForm("A project must have at least one employee!").ShowDialog();
                 return true;

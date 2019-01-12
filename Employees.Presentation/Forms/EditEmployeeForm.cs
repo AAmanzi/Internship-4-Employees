@@ -140,6 +140,14 @@ namespace Employees.Presentation.Forms
                 if (RelationProjectEmployeeRepo.IsEmployeeOnProject(OldOib, projectName)) continue;
                 var addHours = new AddHoursForm(projectName, NameTextBox.Text, true);
                 addHours.ShowDialog();
+                if (addHours.HoursToAdd == 0)
+                {
+                    var hoursError =
+                        new ErrorForm(
+                            $"Project {projectName} could not be added!\nAn employee cannot work 0 hours on a project!");
+                    hoursError.ShowDialog();
+                    continue;
+                }
                 RelationProjectEmployeeRepo.TryAdd(projectName, OldOib, addHours.HoursToAdd);
             }
         }
