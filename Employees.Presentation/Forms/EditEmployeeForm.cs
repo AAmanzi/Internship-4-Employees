@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Employees.Data.Enums;
+using Employees.Data.Models;
 using Employees.Domain.Repositories;
 using Employees.Infrastructure.Extensions;
 
@@ -22,21 +23,21 @@ namespace Employees.Presentation.Forms
             IsAdd = true;
         }
 
-        public EditEmployeeForm(string name, string lastName, DateTime dateOfBirth, string oib, Position position)
+        public EditEmployeeForm(Employee toEdit)
         {
-            OldOib = oib;
+            OldOib = toEdit.Oib;
             IsAdd = false;
 
             InitializeComponent();
-            NameTextBox.Text = name;
-            LastNameTextBox.Text = lastName;
-            DateOfBirthPicker.Value = dateOfBirth;
+            NameTextBox.Text = toEdit.Name;
+            LastNameTextBox.Text = toEdit.LastName;
+            DateOfBirthPicker.Value = toEdit.DateOfBirth;
             DateOfBirthPicker.MaxDate = DateTime.Now.Subtract(new TimeSpan(365 * 18 + 4, 0, 0, 0));
-            OibTextBox.Text = oib;
+            OibTextBox.Text = toEdit.Oib;
             RefreshPositionComboBox();
-            PositionComboBox.Text = position.ToString();
+            PositionComboBox.Text = toEdit.Position.ToString();
             RefreshProjectsListBox();
-            CheckProjectsByEmployee(oib);
+            CheckProjectsByEmployee(toEdit.Oib);
         }
 
         private void RefreshProjectsListBox()

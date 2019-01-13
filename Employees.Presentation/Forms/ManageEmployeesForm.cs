@@ -86,7 +86,7 @@ namespace Employees.Presentation.Forms
 
             foreach (var employee in checkedEmployees)
             {
-                var editProject = new EditEmployeeForm(employee.Name, employee.LastName, employee.DateOfBirth, employee.Oib, employee.Position);
+                var editProject = new EditEmployeeForm(employee);
                 editProject.ShowDialog();
             }
 

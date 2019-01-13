@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Employees.Data.Models;
 using Employees.Domain.Repositories;
 using Employees.Infrastructure.Extensions;
 
@@ -20,16 +21,16 @@ namespace Employees.Presentation.Forms
             IsAdd = true;
         }
 
-        public EditProjectForm(string projectName, DateTime startDate, DateTime endDate)
+        public EditProjectForm(Project toEdit)
         {
-            OldName = projectName;
+            OldName = toEdit.Name;
 
             InitializeComponent();
-            NameTextBox.Text = projectName;
-            StartDatePicker.Value = startDate;
-            EndDatePicker.Value = endDate;
+            NameTextBox.Text = toEdit.Name;
+            StartDatePicker.Value = toEdit.StartOfProject;
+            EndDatePicker.Value = toEdit.EndOfProject;
             RefreshEmployeesListBox();
-            CheckEmployeesOnProject(projectName);
+            CheckEmployeesOnProject(toEdit.Name);
         }
 
         private void CancelButton_Click(object sender, EventArgs e)

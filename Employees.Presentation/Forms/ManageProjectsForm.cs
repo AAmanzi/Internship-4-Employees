@@ -79,7 +79,7 @@ namespace Employees.Presentation.Forms
 
             foreach (var project in checkedProjects)
             {
-                var editProject = new EditProjectForm(project.Name, project.StartOfProject, project.EndOfProject);
+                var editProject = new EditProjectForm(project);
                 editProject.ShowDialog();
             }
             RefreshProjectsListBox();
