@@ -43,7 +43,7 @@ namespace Employees.Infrastructure.Extensions
 
         public static string GetProjectName(this string text)
         {
-            var regex = new Regex(@"([A-Za-z]+\s)+(- Start)");
+            var regex = new Regex(@"([A-Za-zčćžšđČĆŽŠĐ]+\s)+(- Start)");
             var newText = regex.Match(text).ToString().Replace(" - Start", "");
             return newText;
         }
