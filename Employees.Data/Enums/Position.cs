@@ -5,6 +5,6 @@
         Developer,
         Designer,
         Slicer,
-        ProjectManager,
+        ProjectManager
     }
 }

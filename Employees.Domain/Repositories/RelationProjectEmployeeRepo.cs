@@ -35,19 +35,6 @@ namespace Employees.Domain.Repositories
             return null;
         }
 
-        public static bool TryAdd(string nameOfProject, string oib, int hoursOfWork)
-        {
-            foreach (var relation in AllRelations)
-            {
-                if (relation.NameOfProject == nameOfProject && relation.Oib == oib)
-                    return false;
-            }
-
-            var newRelation = new RelationProjectEmployee(nameOfProject, oib, hoursOfWork);
-            AllRelations.Add(newRelation);
-            return true;
-        }
-
         public static List<Employee> GetEmployeesOnProject(string nameOfProject)
         {
             var employeesOnProject = new List<Employee>();
@@ -87,14 +74,20 @@ namespace Employees.Domain.Repositories
 
         public static bool IsEmployeeOnProject(string oib, string projectName)
         {
-            var projectsByEmployee = GetProjectsByEmployee(oib);
-            foreach (var project in projectsByEmployee)
+            return GetRelation(oib, projectName) != null;
+        }
+
+        public static bool TryAdd(string nameOfProject, string oib, int hoursOfWork)
+        {
+            foreach (var relation in AllRelations)
             {
-                if (project.Name == projectName)
-                    return true;
+                if (relation.NameOfProject == nameOfProject && relation.Oib == oib)
+                    return false;
             }
 
-            return false;
+            var newRelation = new RelationProjectEmployee(nameOfProject, oib, hoursOfWork);
+            AllRelations.Add(newRelation);
+            return true;
         }
 
         public static bool TryRemove(RelationProjectEmployee toRemove)

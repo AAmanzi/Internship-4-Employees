@@ -24,6 +24,7 @@ namespace Employees.Presentation.Forms
         public EditProjectForm(Project toEdit)
         {
             OldName = toEdit.Name;
+            IsAdd = false;
 
             InitializeComponent();
             NameTextBox.Text = toEdit.Name;
@@ -65,7 +66,8 @@ namespace Employees.Presentation.Forms
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            NameTextBox.Text = NameTextBox.Text.TrimAndRemoveWhiteSpaces().FirstLetterToUpper();
+            if(!string.IsNullOrWhiteSpace(NameTextBox.Text))
+                NameTextBox.Text = NameTextBox.Text.TrimAndRemoveWhiteSpaces().FirstLetterToUpper();
             
             foreach (var checkedEmployeeItem in EmployeeListBox.CheckedItems)
             {
